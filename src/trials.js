@@ -1,378 +1,535 @@
 const trials = [
 {
     id: 1,
-    phase: "blindspot",
-    condition: "trial1",
-    utterance: "The house",
-    item: "house",
+    phase: "cg",
+    block_id:1,
+    trial_in_block:1,
+    condition: "filler1",
+    utterance: "The flower",
+    item: "red flower",
     image: "stimuli/trial_01.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "topRight",
+    correctAnswer: "topLeft"
   },
 
 {
     id: 2,
-    phase: "blindspot",
-    condition: "trial2size",
-    utterance: "The umbrella",
-    item: "red umbrella",
+    phase: "cg",
+    block_id:1,
+    trial_in_block:2,
+    condition: "baseline",
+    utterance: "The shoe",
+    item: "red shoe",
     image: "stimuli/trial_02.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight", "bottomRight"]
+    blindSpot: "topRight",
+    correctAnswer: "bottomRight"
   },
-  
+
 {
     id: 3,
-    phase: "blindspot",
-    condition: "trial1",
-    utterance: "The flower",
-    item: "red flower",
+    phase: "cg",
+    block_id:1,
+    trial_in_block:3,
+    condition: "filler2color",
+    utterance: "The green apple",
+    item: "green apple",
     image: "stimuli/trial_03.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "topRight",
+    correctAnswer: "bottomRight"
   },
 
 {
     id: 4,
-    phase: "blindspot",
-    condition: "trial3color",
-    utterance: "The green chair",
-    item: "green chair",
+    phase: "cg",
+    block_id:1,
+    trial_in_block:4,
+    condition: "filler1",
+    utterance: "The dog",
+    item: "dog",
     image: "stimuli/trial_04.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "topRight",
+    correctAnswer: "bottomLeft"
   },
 
 {
     id: 5,
-    phase: "blindspot",
-    condition: "trial1",
-    utterance: "The clock",
-    item: "red clock",
+    phase: "cg",
+    block_id:1,
+    trial_in_block:5,
+    condition: "baseline",
+    utterance: "The house",
+    item: "house",
     image: "stimuli/trial_05.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "topRight",
+    correctAnswer: "bottomLeft"
   },
 
 {
     id: 6,
-    phase: "blindspot",
-    condition: "trial3color",
-    utterance: "The yellow book",
-    item: "yellow book",
+    phase: "cg",
+    block_id:2,
+    trial_in_block:1,
+    condition: "filler2color",
+    utterance: "The red chair",
+    item: "red chair",
     image: "stimuli/trial_06.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "bottomLeft",
+    correctAnswer: "topLeft"
   },
 
 {
     id: 7,
-    phase: "blindspot",
-    condition: "trial1",
-    utterance: "The fish",
-    item: "blue fish",
+    phase: "cg",
+    block_id:2,
+    trial_in_block:2,
+    condition: "filler1",
+    utterance: "The cup",
+    item: "blue cup",
     image: "stimuli/trial_07.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "bottomLeft",
+    correctAnswer: "bottomRight"
   },
-
+  
 {
     id: 8,
-    phase: "blindspot",
-    condition: "trial2color",
-    utterance: "The shoe",
-    item: "blue shoe",
+    phase: "cg",
+    block_id:2,
+    trial_in_block:3,
+    condition: "baseline",
+    utterance: "The dog",
+    item: "dog",
     image: "stimuli/trial_08.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["bottomLeft", "bottomRight"]
+    blindSpot: "bottomLeft",
+    correctAnswer: "topLeft"
   },
 
 {
     id: 9,
-    phase: "blindspot",
-    condition: "trial1",
-    utterance: "The pen",
-    item: "orange pen",
+    phase: "cg",
+    block_id:2,
+    trial_in_block:4,
+    condition: "filler1",
+    utterance: "The clock",
+    item: "red clock",
     image: "stimuli/trial_09.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topLeft"]
+    blindSpot: "bottomLeft",
+    correctAnswer: "bottomRight"
   },
 
 {
     id: 10,
-    phase: "blindspot",
-    condition: "trial4size",
-    utterance: "The small flower",
-    item: "small red flower",
+    phase: "cg",
+    block_id:2,
+    trial_in_block:5,
+    condition: "filler2size",
+    utterance: "The small umbrella",
+    item: "small red umbrella",
     image: "stimuli/trial_10.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "bottomLeft",
+    correctAnswer: "bottomRight"
   },
 
 {
     id: 11,
-    phase: "blindspot",
-    condition: "trial2size",
-    utterance: "The apple",
-    item: "red apple",
+    phase: "cg",
+    block_id:3,
+    trial_in_block:1,
+    condition: "filler2size",
+    utterance: "The big cup",
+    item: "small bluecup",
     image: "stimuli/trial_11.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["bottomLeft", "bottomRight"]
+    blindSpot: "topLeft",
+    correctAnswer: "topRight"
   },
 
 {
     id: 12,
-    phase: "blindspot",
-    condition: "trial1",
-    utterance: "The house",
-    item: "house",
+    phase: "cg",
+    block_id:3,
+    trial_in_block:2,
+    condition: "filler2color",
+    utterance: "The yellow flower",
+    item: "yellow flower",
     image: "stimuli/trial_12.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topLeft"]
+    blindSpot: "topLeft",
+    correctAnswer: "bottomLeft"
   },
 
 {
     id: 13,
-    phase: "blindspot",
-    condition: "trial1",
-    utterance: "The cat",
-    item: "cat",
+    phase: "cg",
+    block_id:3,
+    trial_in_block:3,
+    condition: "baseline",
+    utterance: "The book",
+    item: "green book",
     image: "stimuli/trial_13.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "topLeft",
+    correctAnswer: "bottomRight"
   },
 
 {
     id: 14,
-    phase: "blindspot",
-    condition: "trial3size",
-    utterance: "The big dog",
-    item: "dog",
+    phase: "cg",
+    block_id:3,
+    trial_in_block:4,
+    condition: "filler1",
+    utterance: "The tree",
+    item: "tree",
     image: "stimuli/trial_14.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topLeft"]
+    blindSpot: "topLeft",
+    correctAnswer: "bottomRight"
   },
 
 {
     id: 15,
-    phase: "blindspot",
+    phase: "cg",
+    block_id:3,
+    trial_in_block:5,
     condition: "baseline",
-    utterance: "The car",
-    item: "red car",
+    utterance: "The duck",
+    item: "duck",
     image: "stimuli/trial_15.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topLeft"]
+    blindSpot: "topLeft",
+    correctAnswer: "bottomLeft"
   },
 
 {
     id: 16,
-    phase: "blindspot",
-    condition: "trial4color",
-    utterance: "The blue chair",
-    item: "blue chair",
+    phase: "cg",
+    block_id:4,
+    trial_in_block:1,
+    condition: "filler2size",
+    utterance: "The big cat",
+    item: "big cat",
     image: "stimuli/trial_16.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["bottomLeft"]
+    blindSpot: "bottomRight",
+    correctAnswer: "bottomLeft"
   },
 
 {
     id: 17,
-    phase: "blindspot",
-    condition: "trial1",
-    utterance: "The duck",
-    item: "duck",
+    phase: "cg",
+    block_id:4,
+    trial_in_block:2,
+    condition: "filler1",
+    utterance: "The house",
+    item: "house",
     image: "stimuli/trial_17.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "bottomRight",
+    correctAnswer: "topLeft"
   },
 
 {
     id: 18,
-    phase: "blindspot",
-    condition: "trial1",
-    utterance: "The tree",
-    item: "tree",
+    phase: "cg",
+    block_id:4,
+    trial_in_block:3,
+    condition: "baseline",
+    utterance: "The pen",
+    item: "green pen",
     image: "stimuli/trial_18.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topLeft"]
+    blindSpot: "bottomRight",
+    correctAnswer: "topRight"
   },
 
 {
     id: 19,
-    phase: "blindspot",
-    condition: "trial2color",
-    utterance: "The umbrella",
-    item: "yellow umbrella",
+    phase: "cg",
+    block_id:4,
+    trial_in_block:4,
+    condition: "filler1",
+    utterance: "The chair",
+    item: "red chair",
     image: "stimuli/trial_19.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["bottomLeft"]
+    blindSpot: "bottomRight",
+    correctAnswer: "bottomLeft"
   },
 
 {
     id: 20,
-    phase: "blindspot",
-    condition: "trial1",
-    utterance: "The shoe",
-    item: "red shoe",
+    phase: "cg",
+    block_id:4,
+    trial_in_block:5,
+    condition: "baseline",
+    utterance: "The car",
+    item: "yellowcar",
     image: "stimuli/trial_20.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "bottomRight",
+    correctAnswer: "topRight"
   },
 
 {
     id: 21,
-    phase: "susp",
-    condition: "filler1",
-    utterance: "The umbrella",
-    item: "red umbrella",
+    phase: "cg",
+    block_id:5,
+    trial_in_block:1,
+    condition: "filler2size",
+    utterance: "The big chair",
+    item: "red chair",
     image: "stimuli/trial_21.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topLeft"]
+    blindSpot: "topRight",
+    correctAnswer: "topLeft"
   },
 
 {
     id: 22,
-    phase: "susp",
-    condition: "critical",
-    utterance: "The orange fish",
-    item: "orange fish",
+    phase: "cg",
+    block_id:5,
+    trial_in_block:2,
+    condition: "filler1",
+    utterance: "The clock",
+    item: "red clock",
     image: "stimuli/trial_22.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["bottomLeft"]
+    blindSpot: "topRight",
+    correctAnswer: "bottomLeft"
   },
 
 {
     id: 23,
-    phase: "susp",
-    condition: "filler2size",
-    utterance: "The small clock",
-    item: "small red clock",
+    phase: "cg",
+    block_id:5,
+    trial_in_block:3,
+    condition: "baseline",
+    utterance: "The fish",
+    item: "orange fish",
     image: "stimuli/trial_23.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"] 
+    blindSpot: "topRight",
+    correctAnswer: "bottomRight"
   },
 
 {
     id: 24,
-    phase: "susp",
-    condition: "critical",
-    utterance: "The blue book",
-    item: "blue book",
+    phase: "cg",
+    block_id:5,
+    trial_in_block:4,
+    condition: "filler1",
+    utterance: "The apple",
+    item: "green apple",
     image: "stimuli/trial_24.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["bottomLeft"]
+    blindSpot: "topRight",
+    correctAnswer: "topLeft"
   },
 
 {
     id: 25,
-    phase: "susp",
-    condition: "critical",
-    utterance: "The red shoe",
-    item: "red shoe",
+    phase: "cg",
+    block_id:5,
+    trial_in_block:5,
+    condition: "filler2color",
+    utterance: "The green car",
+    item: "green car",
     image: "stimuli/trial_25.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "topRight",
+    correctAnswer: "bottomLeft"
   },
 
 {
     id: 26,
     phase: "susp",
+    block_id:6,
+    trial_in_block:1,
     condition: "filler1",
     utterance: "The pen",
-    item: "blue pen",
+    item: "green pen",
     image: "stimuli/trial_26.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["bottomLeft"]
+    blindSpot: "bottomLeft",
+    correctAnswer: "topLeft"
   },
 
 {
     id: 27,
     phase: "susp",
-    condition: "filler2color",
-    utterance: "The orange cup",
-    item: "orange cup",
+    block_id:6,
+    trial_in_block:2,
+    condition: "critical",
+    utterance: "The orange fish",
+    item: "orange fish",
     image: "stimuli/trial_27.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topLeft"]
+    blindSpot: "bottomLeft",
+    correctAnswer: "bottomRight"
   },
 
 {
     id: 28,
     phase: "susp",
-    condition: "critical",
-    utterance: "The green chair",
-    item: "green chair",
+    block_id:6,
+    trial_in_block:3,
+    condition: "filler2color",
+    utterance: "The blue umbrella",
+    item: "blue umbrella",
     image: "stimuli/trial_28.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "bottomLeft",
+    correctAnswer: "topLeft"
   },
 
 {
     id: 29,
     phase: "susp",
-    condition: "filler2color",
-    utterance: "The red apple",
-    item: "red apple",
+    block_id:6,
+    trial_in_block:4,
+    condition: "baseline",
+    utterance: "The cat",
+    item: "cat",
     image: "stimuli/trial_29.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["bottomLeft"]
+    blindSpot: "bottomLeft",
+    correctAnswer: "topRight"
   },
 
 {
     id: 30,
     phase: "susp",
+    block_id:6,
+    trial_in_block:5,
     condition: "critical",
-    utterance: "The blue clock",
-    item: "blue clock",
+    utterance: "The red shoe",
+    item: "red shoe",
     image: "stimuli/trial_30.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topLeft"]
+    blindSpot: "bottomLeft",
+    correctAnswer: "topRight"
   },
 
 {
     id: 31,
     phase: "susp",
-    condition: "filler1",
-    utterance: "The house",
-    item: "house",
+    block_id:7,
+    trial_in_block:2,
+    condition: "critical",
+    utterance: "The yellow flower",
+    item: "yellow flower",
     image: "stimuli/trial_31.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "bottomRight",
+    correctAnswer: "topLeft"
   },
 
 {
     id: 32,
     phase: "susp",
-    condition: "critical",
-    utterance: "The yellow umbrella",
-    item: "yellow umbrella",
+    block_id:7,
+    trial_in_block:1,
+    condition: "filler2size",
+    utterance: "The small book",
+    item: "green book",
     image: "stimuli/trial_32.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["bottomLeft"]
+    blindSpot: "bottomRight",
+    correctAnswer: "bottomLeft"
   },
 
 {
     id: 33,
     phase: "susp",
-    condition: "filler2size",
-    utterance: "The small tree",
-    item: "small tree",
+    block_id:7,
+    trial_in_block:3,
+    condition: "baseline",
+    utterance: "The apple",
+    item: "red apple",
     image: "stimuli/trial_33.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topRight"]
+    blindSpot: "bottomRight",
+    correctAnswer: "topLeft"
   },
 
 {
     id: 34,
     phase: "susp",
+    block_id:7,
+    trial_in_block:5,
     condition: "critical",
-    utterance: "The red flower",
-    item: "red flower",
+    utterance: "The blue clock",
+    item: "blue clock",
     image: "stimuli/trial_34.png",
-    greyCell: "bottomRight",
-    correctAnswer: ["topLeft"]
+    blindSpot: "bottomRight",
+    correctAnswer: "topLeft"
+  },
+
+{
+    id: 35,
+    phase: "susp",
+    block_id:7,
+    trial_in_block:4,
+    condition: "filler1",
+    utterance: "The duck",
+    item: "duck",
+    image: "stimuli/trial_35.png",
+    blindSpot: "bottomRight",
+    correctAnswer: "bottomLeft"
+  }, 
+
+{
+    id: 36,
+    phase: "susp",
+    block_id:8,
+    trial_in_block:1,
+    condition: "filler1",
+    utterance: "The fish",
+    item: "orange fish",
+    image: "stimuli/trial_36.png",
+    blindSpot: "topLeft",
+    correctAnswer: "topRight"
+  },
+
+{
+    id: 37,
+    phase: "susp",
+    block_id:8,
+    trial_in_block:2,
+    condition: "critical",
+    utterance: "The orange pen",
+    item: "orange pen",
+    image: "stimuli/trial_37.png",
+    blindSpot: "topLeft",
+    correctAnswer: "bottomLeft"
+  },
+
+{
+    id: 38,
+    phase: "susp",
+    block_id:8,
+    trial_in_block:3,
+    condition: "filler2size",
+    utterance: "The big tree",
+    item: "tree",
+    image: "stimuli/trial_38.png",
+    blindSpot: "topLeft",
+    correctAnswer: "bottomRight"
+  },
+
+{
+    id: 39,
+    phase: "susp",
+    block_id:8,
+    trial_in_block:4,
+    condition: "critical",
+    utterance: "The blue book",
+    item: "blue book",
+    image: "stimuli/trial_39.png",
+    blindSpot: "topLeft",
+    correctAnswer: "topRight"
+  },
+
+{
+    id: 40,
+    phase: "susp",
+    block_id:8,
+    trial_in_block:5,
+    condition: "baseline",
+    utterance: "The umbrella",
+    item: "red umbrella",
+    image: "stimuli/trial_40.png",
+    blindSpot: "topLeft",
+    correctAnswer: "bottomLeft"
   }
 
 ];
 
-export default trials;
+function makeBlocks(trials) {
+  const blockIds = [...new Set(trials.map(trial => trial.block_id))];
+
+  return blockIds.map(blockId =>
+    trials.filter(trial => trial.block_id === blockId)
+  );
+}
+
+const trialBlocks = makeBlocks(trials);
+
+export { trials, trialBlocks };
+export default trialBlocks;

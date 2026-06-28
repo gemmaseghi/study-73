@@ -2,11 +2,11 @@
   <Screen>
     <h2>Final questions</h2>
 
-    <!-- Step 1: Question A -->
+    <!-- Step 1: Peculiar descriptions yes/no -->
     <div v-if="step === 1" class="question">
       <p>
         Did you think there was anything peculiar in the way the speaker
-        formulated the descriptions of the target objects?
+        formulated the descriptions?
       </p>
 
       <div class="radio-container">
@@ -26,7 +26,7 @@
       </button>
     </div>
 
-    <!-- Step 2: Question B -->
+    <!-- Step 2: Peculiar explanation or strategy -->
     <div v-if="step === 2" class="question">
       <div v-if="peculiar === 'yes'">
         <p>What was peculiar about the descriptions?</p>
@@ -34,7 +34,7 @@
       </div>
 
       <div v-if="peculiar === 'no'">
-        <p>Please explain any strategy you may have used to select the object described by the speaker.</p>
+        <p>Please explain any strategy you may have used to select the intended objects in the task.</p>
         <textarea v-model="strategyExplanation"></textarea>
       </div>
 
@@ -43,16 +43,47 @@
       </button>
     </div>
 
-    <!-- Step 3: Question C -->
+    <!-- Step 3: Suspicion yes/no -->
     <div v-if="step === 3" class="question">
       <p>
         Did you ever suspect that the speaker could see what was in the grey cell?
-        Please explain why and give examples if possible.
       </p>
 
-      <textarea v-model="suspicionExplanation"></textarea>
+      <div class="radio-container">
+        <label>
+          <input type="radio" value="yes" v-model="suspicion" />
+          Yes
+        </label>
 
-      <button :disabled="!suspicionExplanation.trim()" @click="submitQuestionnaire">
+        <label>
+          <input type="radio" value="no" v-model="suspicion" />
+          No
+        </label>
+      </div>
+
+      <button :disabled="!suspicion" @click="step = 4">
+        Next
+      </button>
+    </div>
+
+    <!-- Step 4: Suspicion follow-up -->
+    <div v-if="step === 4" class="question">
+      <div v-if="suspicion === 'no'">
+        <p>Please explain why.</p>
+        <textarea v-model="suspicionNoExplanation"></textarea>
+      </div>
+
+      <div v-if="suspicion === 'yes'">
+        <p>Please explain why.</p>
+        <textarea v-model="suspicionYesExplanation"></textarea>
+
+        <p class="followup-question">
+          Please give examples from the task.
+        </p>
+        <textarea v-model="suspicionExamples"></textarea>
+      </div>
+
+      <button :disabled="!canSubmit" @click="submitQuestionnaire">
         Continue
       </button>
     </div>
@@ -68,7 +99,10 @@ export default {
       peculiar: "",
       peculiarExplanation: "",
       strategyExplanation: "",
-      suspicionExplanation: ""
+      suspicion: "",
+      suspicionYesExplanation: "",
+      suspicionNoExplanation: "",
+      suspicionExamples: ""
     };
   },
   computed: {
@@ -82,16 +116,36 @@ export default {
       }
 
       return false;
+    },
+
+    canSubmit() {
+      if (this.suspicion === "yes") {
+        return (
+          this.suspicionYesExplanation.trim() &&
+          this.suspicionExamples.trim()
+        );
+      }
+
+      if (this.suspicion === "no") {
+        return this.suspicionNoExplanation.trim();
+      }
+
+      return false;
     }
   },
   methods: {
     submitQuestionnaire() {
       this.$magpie.addTrialData({
         trial_type: "questionnaire",
+
         peculiar_answer: this.peculiar,
         peculiar_explanation: this.peculiarExplanation,
         strategy_explanation: this.strategyExplanation,
-        suspicion_explanation: this.suspicionExplanation
+
+        suspicion_answer: this.suspicion,
+        suspicion_yes_explanation: this.suspicionYesExplanation,
+        suspicion_no_explanation: this.suspicionNoExplanation,
+        suspicion_examples: this.suspicionExamples
       });
 
       this.$magpie.nextScreen();
@@ -103,6 +157,7 @@ export default {
 <style scoped>
 .question {
   margin-bottom: 25px;
+  font-size: 18px;
 }
 
 label {
@@ -131,5 +186,9 @@ button {
   align-items: center;
   gap: 5px;
   margin: 0;
+}
+
+.followup-question {
+  margin-top: 25px;
 }
 </style>
