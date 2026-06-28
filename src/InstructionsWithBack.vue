@@ -128,7 +128,7 @@ export default {
             </p>
 
             <p>
-              <strong>Second part</strong>: you <strong>will instead be told which cell is hidden from Sam</strong>. In each grid, <strong>the cell hidden from Sam will be marked in grey</strong>. In the second part of the game you will therefore <strong>no longer be asked to identify the hidden cell</strong>. 
+              <strong>Second part</strong>: you <strong>will be told which cell is hidden from Sam</strong>. In each grid, <strong>the cell hidden from Sam will be marked in grey</strong>. In the second part of the game you will therefore <strong>no longer be asked to identify the hidden cell</strong>. 
             </p>
  
             <p>Your view of the grid in the first part of the experiment is on the left, while your view in the second part of the experiment in on the right:</p>
