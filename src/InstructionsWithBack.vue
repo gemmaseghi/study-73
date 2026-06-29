@@ -1,20 +1,64 @@
 <template>
   <Screen>
-    <div class="instructions">
+    <div v-if="step === 'failed'" class="instructions">
+      <h2>Study stopped</h2>
+
+      <p>
+        Unfortunately, it appears that the task instructions have not been understood.
+      </p>
+
+      <p>
+        Please return your submission by closing this study and clicking
+        <strong>Stop Without Completing</strong> on Prolific.
+      </p>
+    </div>
+
+    <div v-else class="instructions">
       <h2>{{ pages[page].title }}</h2>
 
       <div v-html="pages[page].text"></div>
 
+      <div v-if="pages[page].check" class="comprehension-check">
+        <p class="check-question">
+          <strong>{{ pages[page].check.question }}</strong>
+        </p>
+
+        <label
+          v-for="(option, index) in pages[page].check.options"
+          :key="index"
+          class="check-option"
+        >
+          <input
+            type="radio"
+            :name="`check-${page}`"
+            :value="index"
+            v-model="selectedAnswer"
+            @change="handleCheckAnswer"
+          />
+          {{ option }}
+        </label>
+
+        <p v-if="checkError" class="check-error">
+          That answer is not correct. Please reread the instructions above and try again.
+        </p>
+      </div>
+
       <div class="button-container">
-        <button v-if="page > 0" @click="page--">
+        <button v-if="page > 0" @click="previousPage">
           Back
         </button>
 
-        <button v-if="page < pages.length - 1" @click="page++">
+        <button
+          v-if="page < pages.length - 1 && canGoNext"
+          @click="pageForward"
+        >
           Next
         </button>
 
-        <button v-else @click="$magpie.nextScreen()">
+        <button
+          v-else-if="page === pages.length - 1 && canGoNext"
+          @click="pageForward"
+        >
           Continue
         </button>
       </div>
@@ -28,6 +72,12 @@ export default {
   data() {
     return {
       page: 0,
+      step: "instructions",
+      selectedAnswer: null,
+      checkPassed: false,
+      checkError: false,
+      failedComprehension: false,
+      checkAttempts: {},
       pages: [
         {
           title: "Consent Form",
@@ -45,7 +95,7 @@ export default {
             </p>
 
             <p>
-              You will receive £2.00 for your participation. Please note that compensation can only be provided if you complete the study. If you experience any technical issues, please contact us via Prolific.
+              You will receive £2.40 for your participation. Please note that compensation can only be provided if you complete the study. If you experience any technical issues, please contact us via Prolific.
             </p>
 
             <p>
@@ -90,7 +140,12 @@ export default {
             <p>
               <strong>Your task will be to select the object described by Sam by clicking on it</strong>. 
             </p>
-          `
+          `,
+          check: {
+            question: "Based on the instructions you have just read, how many objects are contained in each grid? Please re-read the study instructions above if you are not sure. You will have two opportunities to get this question correct.",
+            options: ["One", "Two", "Three", "Four"],
+            correct: 3
+          }
         },
         {
           title: "Instructions",
@@ -113,7 +168,12 @@ export default {
               src="instructions/example_view.png"
               class="example-image"
             />
-          `
+          `,
+          check: {
+            question: "Based on the instructions you have just read, how many objects does Sam see in the grid? Please re-read the study instructions above if you are not sure. You will have two opportunities to get this question correct.",
+            options: ["One", "Two", "Three", "Four"],
+            correct: 2
+          }
         },
         {
           title: "Instructions",
@@ -137,9 +197,12 @@ export default {
               src="instructions/instructions_02.png"
               class="example-image"
             />
-            
-
-          `
+          `,
+          check: {
+            question: "Based on the instructions you have just read, during the first part of the experiment, what happens after you have selected an object in all five grids? Please re-read the study instructions above if you are not sure. You will have two opportunities to get this question correct.",
+            options: ["The next block begins immediately.", "You are asked to identify which cell Sam cannot see.", "You are shown Sam's screen.", "The experiment ends."],
+            correct: 1
+          }
         },
         {
           title: "Instructions",
@@ -155,7 +218,12 @@ export default {
             <p>
               <strong>After each selection, the completed grid will move to the top of the screen, where it will appear smaller and your selection will remain marked with a black dot.</strong> At the same time, the next grid will immediately appear in the large display in the centre of the page. <strong>The grids shown at the top are only there as a record of your previous selections, you do not need to click on them again.</strong>
             </p>
-          `
+          `,
+          check: {
+            question: "Based on the instructions you have just read, after you select an object in a grid, what happens to the completed grid? Please re-read the study instructions above if you are not sure. You will have two opportunities to get this question correct.",
+            options: ["It disappears.", "It stays in the centre until all five grids are completed.", "It moves to the top of the screen and remains there as a record of your selection.", "It is replaced by Sam's version of the grid."],
+            correct: 2
+          }
         },
         {
           title: "Instructions",
@@ -173,11 +241,77 @@ export default {
             <p>
               At the end of the experiment, you will be asked to complete a short questionnaire.
             </p>
-          `
+          `,
+          check: {
+            question: "Based on the instructions you have just read, during the second part of the experiment, how do you know which cell Sam cannot see? Please re-read the study instructions above if you are not sure. You will have two opportunities to get this question correct.",
+            options: ["The hidden cell is shown in grey.", "Sam tells you in the text description.", "You infer it from Sam's descriptions.", "It is marked with an asterisk."],
+            correct: 0
+          }
         }
       ]
     };
-  }
+  },
+
+  methods: {
+    currentCheck() {
+      return this.pages[this.page].check;
+    },
+
+    resetCheckState() {
+      this.selectedAnswer = null;
+      this.checkPassed = false;
+      this.checkError = false;
+    },
+
+    previousPage() {
+      this.page -= 1;
+      this.resetCheckState();
+    },
+
+    handleCheckAnswer() {
+      const check = this.currentCheck();
+
+      if (!check) {
+        return;
+      }
+
+      if (Number(this.selectedAnswer) === check.correct) {
+        this.checkPassed = true;
+        this.checkError = false;
+        return;
+      }
+
+      const attemptsSoFar = this.checkAttempts[this.page] || 0;
+      const newAttempts = attemptsSoFar + 1;
+      this.$set(this.checkAttempts, this.page, newAttempts);
+
+      this.checkPassed = false;
+
+      if (newAttempts >= 2) {
+        this.step = "failed";
+        return;
+      }
+
+      this.checkError = true;
+      this.selectedAnswer = null;
+    },
+
+    pageForward() {
+      if (this.page < this.pages.length - 1) {
+        this.page += 1;
+        this.resetCheckState();
+      } else {
+        this.$magpie.nextScreen();
+      }
+    }
+  },
+
+  computed: {
+    canGoNext() {
+      const check = this.pages[this.page].check;
+      return !check || this.checkPassed;
+    }
+  },
 };
 </script>
 
@@ -244,5 +378,30 @@ export default {
   max-width: 650px;
   width: auto;
   height: auto;
+}
+
+.comprehension-check {
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: left;
+}
+
+.check-question {
+  margin-top: 0;
+}
+
+.check-option {
+  display: block;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+.check-error {
+  color: #a00000;
+  font-weight: bold;
+  margin-top: 12px;
 }
 </style>
