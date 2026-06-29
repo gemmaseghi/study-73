@@ -40,7 +40,9 @@
       </div>
 
       <div v-if="step === 'blindspot'" class="active-area">
-        <h3 class="active-utterance">Select the cell that Sam cannot see</h3>
+        <h3 class="active-utterance">
+          {{ blindSpotError ? "You selected the wrong hidden cell, please try again" : "Select the cell that Sam cannot see" }}
+        </h3>
 
         <div class="active-grid-wrapper">
           <img :src="emptyGridImage" class="active-stimulus" />
@@ -87,6 +89,8 @@ export default {
       blindSpotStartTime: null,
       responses: [],
       blindSpotResponse: null,
+      blindSpotAttempts: [],
+      blindSpotError: false,
       imagesReady: false,
       emptyGridImage: "stimuli/empty_grid.png"
     };
@@ -174,19 +178,41 @@ export default {
     selectBlindSpot(answer) {
       const now = performance.now();
       const correctBlindSpot = this.block[0].blindSpot;
+      const isCorrect = answer === correctBlindSpot;
 
       this.blindSpotResponse = answer;
 
-      this.$nextTick(() => {
-        requestAnimationFrame(() => {
-          this.finishBlock({
-            response: answer,
-            correct_answer: correctBlindSpot,
-            correct: answer === correctBlindSpot,
-            rt: now - this.blindSpotStartTime
+      this.blindSpotAttempts.push({
+        response: answer,
+        correct_answer: correctBlindSpot,
+        correct: isCorrect,
+        rt: now - this.blindSpotStartTime
+      });
+
+      if (isCorrect) {
+        this.$nextTick(() => {
+          requestAnimationFrame(() => {
+            this.finishBlock({
+              response: answer,
+              correct_answer: correctBlindSpot,
+              correct: true,
+              rt: now - this.blindSpotStartTime,
+              attempts: this.blindSpotAttempts.length
+            });
           });
         });
-      });
+      } else {
+        setTimeout(() => {
+          this.blindSpotResponse = null;
+          this.blindSpotError = true;
+
+          this.$nextTick(() => {
+            requestAnimationFrame(() => {
+              this.blindSpotStartTime = performance.now();
+            });
+          });
+        }, 250);
+      }
     },
 
     finishBlock(blindSpotData = null) {
@@ -207,6 +233,8 @@ export default {
         trialData.blind_spot_correct_answer = blindSpotData.correct_answer;
         trialData.blind_spot_correct = blindSpotData.correct;
         trialData.blind_spot_rt = blindSpotData.rt;
+        trialData.blind_spot_attempts = blindSpotData.attempts;
+        trialData.blind_spot_attempts_json = JSON.stringify(this.blindSpotAttempts);
       }
 
       this.responses.forEach((r, i) => {

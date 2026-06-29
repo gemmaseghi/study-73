@@ -517,7 +517,73 @@ const trials = [
     image: "stimuli/trial_40.png",
     blindSpot: "topLeft",
     correctAnswer: "bottomLeft"
+  },
+
+{
+    id: 41,
+    phase: "susp",
+    block_id:9,
+    trial_in_block:1,
+    condition: "filler2color",
+    utterance: "The green chair",
+    item: "green chair",
+    image: "stimuli/trial_41.png",
+    blindSpot: "topRight",
+    correctAnswer: "bottomRight"
+  },
+
+{
+    id: 42,
+    phase: "susp",
+    block_id:9,
+    trial_in_block:2,
+    condition: "filler1",
+    utterance: "The apple",
+    item: "green apple",
+    image: "stimuli/trial_42.png",
+    blindSpot: "topRight",
+    correctAnswer: "topLeft"
+  },
+
+{
+    id: 43,
+    phase: "susp",
+    block_id:9,
+    trial_in_block:3,
+    condition: "critical",
+    utterance: "The yellow car",
+    item: "yellow car",
+    image: "stimuli/trial_43.png",
+    blindSpot: "topRight",
+    correctAnswer: "topLeft"
+  },
+
+{
+    id: 44,
+    phase: "susp",
+    block_id:9,
+    trial_in_block:4,
+    condition: "baseline",
+    utterance: "The fish",
+    item: "blue fish",
+    image: "stimuli/trial_44.png",
+    blindSpot: "topRight",
+    correctAnswer: "bottomRight"
+  },
+
+{
+    id: 45,
+    phase: "susp",
+    block_id:9,
+    trial_in_block:5,
+    condition: "critical",
+    utterance: "The red umbrella",
+    item: "red umbrella",
+    image: "stimuli/trial_45.png",
+    blindSpot: "topRight",
+    correctAnswer: "bottomRight"
   }
+
 
 ];
 
