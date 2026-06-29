@@ -163,7 +163,9 @@ export default {
             <p>
               <strong>During the first part of the experiment</strong>, once you have selected an object in all five grids, <strong>the large grid will be replaced by an empty grid</strong>. Your task is to select the cell that you think is hidden from Sam, based on the descriptions he gave throughout the block. Within each block, the hidden cell always remains in the same position. Across blocks, however, it changes position, so you will need to infer it again for each new block.
             </p>
-
+            <p>
+              <strong>Please pay close attention when selecting the hidden cell. Because there are only four possible cells, making more than three incorrect hidden-cell selections is unlikely to occur by chance and may indicate insufficient attention to the task</strong>.
+            </p>
             <p>
               <strong>During the second part of the experiment</strong>, one cell in every grid will be marked in <strong>grey</strong>. The grey cell is the cell that Sam cannot see. Continue selecting the object that you think Sam is referring to, using the grey cell to guide your decision. After you have completed all five grids, <strong>the large grid will be replaced by a square with "Next" written inside it</strong>. Click on it to proceed to the next screen. Since the hidden cell is now shown to you, you will no longer be asked to identify it.
             </p>
