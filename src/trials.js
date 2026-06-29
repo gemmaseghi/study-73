@@ -1,20 +1,20 @@
 const trials = [
 {
     id: 1,
-    phase: "cg",
+    phase: "blindspot",
     block_id:1,
     trial_in_block:1,
     condition: "filler1",
-    utterance: "The flower",
-    item: "red flower",
+    utterance: "The book",
+    item: "yellow book",
     image: "stimuli/trial_01.png",
     blindSpot: "topRight",
-    correctAnswer: "topLeft"
+    correctAnswer: "bottomRight"
   },
 
 {
     id: 2,
-    phase: "cg",
+    phase: "blindspot",
     block_id:1,
     trial_in_block:2,
     condition: "baseline",
@@ -27,7 +27,7 @@ const trials = [
 
 {
     id: 3,
-    phase: "cg",
+    phase: "blindspot",
     block_id:1,
     trial_in_block:3,
     condition: "filler2color",
@@ -40,20 +40,20 @@ const trials = [
 
 {
     id: 4,
-    phase: "cg",
+    phase: "blindspot",
     block_id:1,
     trial_in_block:4,
     condition: "filler1",
-    utterance: "The dog",
-    item: "dog",
+    utterance: "The fish",
+    item: "orange fish",
     image: "stimuli/trial_04.png",
     blindSpot: "topRight",
-    correctAnswer: "bottomLeft"
+    correctAnswer: "topLeft"
   },
 
 {
     id: 5,
-    phase: "cg",
+    phase: "blindspot",
     block_id:1,
     trial_in_block:5,
     condition: "baseline",
@@ -66,7 +66,7 @@ const trials = [
 
 {
     id: 6,
-    phase: "cg",
+    phase: "blindspot",
     block_id:2,
     trial_in_block:1,
     condition: "filler2color",
@@ -79,20 +79,20 @@ const trials = [
 
 {
     id: 7,
-    phase: "cg",
+    phase: "blindspot",
     block_id:2,
     trial_in_block:2,
     condition: "filler1",
-    utterance: "The cup",
-    item: "blue cup",
+    utterance: "The tree",
+    item: "tree",
     image: "stimuli/trial_07.png",
     blindSpot: "bottomLeft",
-    correctAnswer: "bottomRight"
+    correctAnswer: "topRight"
   },
   
 {
     id: 8,
-    phase: "cg",
+    phase: "blindspot",
     block_id:2,
     trial_in_block:3,
     condition: "baseline",
@@ -105,33 +105,33 @@ const trials = [
 
 {
     id: 9,
-    phase: "cg",
+    phase: "blindspot",
     block_id:2,
     trial_in_block:4,
     condition: "filler1",
-    utterance: "The clock",
-    item: "red clock",
+    utterance: "The pen",
+    item: "green pen",
     image: "stimuli/trial_09.png",
     blindSpot: "bottomLeft",
-    correctAnswer: "bottomRight"
+    correctAnswer: "topRight"
   },
 
 {
     id: 10,
-    phase: "cg",
+    phase: "blindspot",
     block_id:2,
     trial_in_block:5,
     condition: "filler2size",
-    utterance: "The small umbrella",
-    item: "small red umbrella",
+    utterance: "The big umbrella",
+    item: "big red umbrella",
     image: "stimuli/trial_10.png",
     blindSpot: "bottomLeft",
-    correctAnswer: "bottomRight"
+    correctAnswer: "topRight"
   },
 
 {
     id: 11,
-    phase: "cg",
+    phase: "blindspot",
     block_id:3,
     trial_in_block:1,
     condition: "filler2size",
@@ -144,20 +144,20 @@ const trials = [
 
 {
     id: 12,
-    phase: "cg",
+    phase: "blindspot",
     block_id:3,
     trial_in_block:2,
     condition: "filler2color",
-    utterance: "The yellow flower",
-    item: "yellow flower",
+    utterance: "The red flower",
+    item: "red flower",
     image: "stimuli/trial_12.png",
     blindSpot: "topLeft",
-    correctAnswer: "bottomLeft"
+    correctAnswer: "topRight"
   },
 
 {
     id: 13,
-    phase: "cg",
+    phase: "blindspot",
     block_id:3,
     trial_in_block:3,
     condition: "baseline",
@@ -170,20 +170,20 @@ const trials = [
 
 {
     id: 14,
-    phase: "cg",
+    phase: "blindspot",
     block_id:3,
     trial_in_block:4,
     condition: "filler1",
-    utterance: "The tree",
-    item: "tree",
+    utterance: "The car",
+    item: "red car",
     image: "stimuli/trial_14.png",
     blindSpot: "topLeft",
-    correctAnswer: "bottomRight"
+    correctAnswer: "topRight"
   },
 
 {
     id: 15,
-    phase: "cg",
+    phase: "blindspot",
     block_id:3,
     trial_in_block:5,
     condition: "baseline",
@@ -196,7 +196,7 @@ const trials = [
 
 {
     id: 16,
-    phase: "cg",
+    phase: "blindspot",
     block_id:4,
     trial_in_block:1,
     condition: "filler2size",
@@ -209,20 +209,20 @@ const trials = [
 
 {
     id: 17,
-    phase: "cg",
+    phase: "blindspot",
     block_id:4,
     trial_in_block:2,
     condition: "filler1",
-    utterance: "The house",
-    item: "house",
+    utterance: "The book",
+    item: "blue book",
     image: "stimuli/trial_17.png",
     blindSpot: "bottomRight",
-    correctAnswer: "topLeft"
+    correctAnswer: "bottomLeft"
   },
 
 {
     id: 18,
-    phase: "cg",
+    phase: "blindspot",
     block_id:4,
     trial_in_block:3,
     condition: "baseline",
@@ -235,7 +235,7 @@ const trials = [
 
 {
     id: 19,
-    phase: "cg",
+    phase: "blindspot",
     block_id:4,
     trial_in_block:4,
     condition: "filler1",
@@ -248,7 +248,7 @@ const trials = [
 
 {
     id: 20,
-    phase: "cg",
+    phase: "blindspot",
     block_id:4,
     trial_in_block:5,
     condition: "baseline",
@@ -261,7 +261,7 @@ const trials = [
 
 {
     id: 21,
-    phase: "cg",
+    phase: "blindspot",
     block_id:5,
     trial_in_block:1,
     condition: "filler2size",
@@ -274,20 +274,20 @@ const trials = [
 
 {
     id: 22,
-    phase: "cg",
+    phase: "blindspot",
     block_id:5,
     trial_in_block:2,
     condition: "filler1",
-    utterance: "The clock",
-    item: "red clock",
+    utterance: "The cup",
+    item: "blue cup",
     image: "stimuli/trial_22.png",
     blindSpot: "topRight",
-    correctAnswer: "bottomLeft"
+    correctAnswer: "topLeft"
   },
 
 {
     id: 23,
-    phase: "cg",
+    phase: "blindspot",
     block_id:5,
     trial_in_block:3,
     condition: "baseline",
@@ -300,7 +300,7 @@ const trials = [
 
 {
     id: 24,
-    phase: "cg",
+    phase: "blindspot",
     block_id:5,
     trial_in_block:4,
     condition: "filler1",
@@ -313,7 +313,7 @@ const trials = [
 
 {
     id: 25,
-    phase: "cg",
+    phase: "blindspot",
     block_id:5,
     trial_in_block:5,
     condition: "filler2color",

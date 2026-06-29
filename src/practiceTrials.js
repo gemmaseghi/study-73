@@ -53,11 +53,11 @@ const practiceTrials = [
     block_id: 0,
     trial_in_block: 5,
     condition: "practice",
-    utterance: "The key",
-    item: "key",
+    utterance: "The pillow",
+    item: "pillow",
     image: "stimuli/practice_05.png",
     blindSpot: "topLeft",
-    correctAnswer: "bottomRight",
+    correctAnswer: "bottomLeft",
   }
 ];
 
