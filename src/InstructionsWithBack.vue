@@ -149,7 +149,7 @@ export default {
             </p>
 
             <p>
-              Read the description above the large grid and click on the object that you think Sam is referring to. <strong>In some cases, you may not have enough information to identify a single object with certainty</strong>. When this happens, select the object that you think is the most likely referent based on the information available.
+              Read the description above the large grid and click on the object that you think Sam is referring to. <strong>In some cases, it might seem that you don't have enough information to identify a single object with certainty</strong>. When this happens, try to identify the most likely referent based on the information available to you. 
             </p>
 
             <p>
