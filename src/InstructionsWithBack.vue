@@ -216,12 +216,12 @@ export default {
             </p>
 
             <p>
-              <strong>After each selection, the completed grid will move to the top of the screen, where it will appear smaller and your selection will remain marked with a black dot.</strong> At the same time, the next grid will immediately appear in the large display in the centre of the page. <strong>The grids shown at the top are only there as a record of your previous selections, you do not need to click on them again.</strong>
+              <strong>After each selection, the completed grid will move to the top of the screen, where it will appear smaller.</strong> At the same time, the next grid will immediately appear in the large display in the centre of the page. <strong>The grids shown at the top are only there as a record of the previous grids along with Sam's descriptions. You can use them to infer the hidden cell, but you do not need to click on them again.</strong>
             </p>
           `,
           check: {
             question: "Based on the instructions you have just read, after you select an object in a grid, what happens to the completed grid? Please re-read the study instructions above if you are not sure. You will have two opportunities to get this question correct.",
-            options: ["It disappears.", "It stays in the centre until all five grids are completed.", "It moves to the top of the screen and remains there as a record of your selection.", "It is replaced by Sam's version of the grid."],
+            options: ["It disappears.", "It stays in the centre until all five grids are completed.", "It moves to the top of the screen.", "It is replaced by Sam's version of the grid."],
             correct: 2
           }
         },
