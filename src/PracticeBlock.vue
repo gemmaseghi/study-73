@@ -26,12 +26,12 @@
 
               <div class="history-grid-wrapper">
                 <img :src="trial.image" class="history-stimulus" />
-                <!--
+                
                 <div
                   class="selection-marker small"
                   :class="responses[index].response"
                 />
-                -->
+                
               </div>
             </template>
           </div>
@@ -67,13 +67,13 @@
             <button class="cell top-right" @click="selectBlindSpot('topRight')" />
             <button class="cell bottom-left" @click="selectBlindSpot('bottomLeft')" />
             <button class="cell bottom-right" @click="selectBlindSpot('bottomRight')" />
-            <!--
+            
             <div
               v-if="blindSpotResponse"
               class="selection-marker blindspot-marker"
               :class="blindSpotResponse"
             />
-            -->
+            
           </div>
         </div>
       </div>
@@ -392,7 +392,7 @@ export default {
   height: 50%;
 }
 
-/*
+
 .selection-marker {
   position: absolute;
   width: 17px;
@@ -432,7 +432,7 @@ export default {
   top: 75%;
   left: 75%;
 }
-*/
+
 
 .preload-placeholder {
   width: 100%;
