@@ -93,7 +93,7 @@ export default {
             </p>
 
             <p>
-              The position of the objects is shuffled in the listener's grid, so <strong>do not use location words</strong>, such as "top left" or "bottom right", in your descriptions.
+              You <strong>are not allowed to use location words</strong>, such as "top left" or "bottom right", in your descriptions.
             </p>
 
             <p>
@@ -135,9 +135,6 @@ export default {
               You will describe <strong>three objects</strong> as practice.
             </p>
 
-            <p>
-              Click "Continue" to move to the next screen and try the role of the speaker.
-            </p>
           `
         },
       ]

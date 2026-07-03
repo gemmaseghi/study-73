@@ -79,10 +79,6 @@ export default {
             <p>
               You will select <strong>three objects</strong> as practice.
             </p>
-
-            <p>
-              Click "Continue" to move to the next screen and try the role of the listener.
-            </p>
           `
         }
       ]

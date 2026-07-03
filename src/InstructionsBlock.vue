@@ -90,8 +90,6 @@ export default {
             </p>
 
             <p>
-              <strong>The previous grids remain visible so that they can help you identify Sam's blindspot</strong>.
-              
               After the fifth grid, <strong>you will be asked to select the cell that you think is hidden from Sam in an empty grid</strong>.
             </p>
 
@@ -108,7 +106,7 @@ export default {
             </div>
 
             <p>
-              Click "Continue" to practice one block as the listener.
+              You will now complete a short practice round of the real game.
             </p>
 
           `
