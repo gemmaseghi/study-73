@@ -1,8 +1,18 @@
 <template>
   <Experiment title="Perspective-taking experiment">
-    <InstructionsWithBack />
+    <InstructionsSpeaker />
+
+    <PracticeSpeaker />
+
+    <InstructionsListener />
+
+    <PracticeListener />
+
+    <InstructionsBlock />
 
     <PracticeBlock :practiceTrials="practiceTrials" />
+
+    <InstructionsTwoParts />
 
     <GridTrial
       v-for="(block, index) in trialBlocks"
@@ -20,7 +30,12 @@
 import trials, { trialBlocks } from "./trials";
 import practiceTrials from "./practiceTrials";
 
-import InstructionsWithBack from "./InstructionsWithBack.vue";
+import InstructionsSpeaker from "./InstructionsSpeaker.vue";
+import InstructionsListener from "./InstructionsListener.vue";
+import InstructionsBlock from "./InstructionsBlock.vue";
+import InstructionsTwoParts from "./InstructionsTwoParts.vue";
+import PracticeSpeaker from "./PracticeSpeaker.vue";
+import PracticeListener from "./PracticeListener.vue";
 import PracticeBlock from "./PracticeBlock.vue";
 import GridTrial from "./GridTrial.vue";
 import Questionnaire from "./Questionnaire.vue";
@@ -28,8 +43,13 @@ import Questionnaire from "./Questionnaire.vue";
 export default {
   name: "App",
   components: {
-    InstructionsWithBack,
+    InstructionsSpeaker,
+    PracticeSpeaker,
+    InstructionsListener,
+    PracticeListener,
+    InstructionsBlock,
     PracticeBlock,
+    InstructionsTwoParts,
     GridTrial,
     Questionnaire
   },

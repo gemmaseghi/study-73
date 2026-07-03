@@ -1,17 +1,5 @@
 <template>
   <Screen>
-    <div v-if="step === 'intro'" class="practice-instructions">
-      <h2>Practice</h2>
-      <p>
-        You will now complete a short practice round to understand how the task works.
-        Please select the object that you think Sam is referring to. 
-      </p>
-      <p>
-        After having selected an object in five grids, you will be asked to select in an empty grid the cell that Sam cannot see.
-      </p>
-      <button @click="startPractice">Start practice</button>
-    </div>
-
     <div v-if="step === 'trial' || step === 'blindspot'">
       <div v-if="imagesReady" class="block-layout">
         <div class="history-row">
@@ -91,7 +79,7 @@
     <div v-if="step === 'done'" class="practice-instructions">
       <h2>End of practice</h2>
       <p>
-        The practice round is now complete. The real experiment will begin on the next screen.
+        The practice round is now complete. 
       </p>
       <button @click="$magpie.nextScreen()">Continue</button>
     </div>
@@ -106,7 +94,7 @@ export default {
   },
   data() {
     return {
-      step: "intro",
+      step: "trial",
       currentGrid: 0,
       blockStartTime: null,
       gridStartTime: null,
@@ -118,6 +106,9 @@ export default {
       imagesReady: false,
       emptyGridImage: "stimuli/empty_grid.png"
     };
+  },
+  mounted() {
+    this.startPractice();
   },
   methods: {
     startPractice() {
