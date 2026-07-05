@@ -77,11 +77,19 @@
     </div>
 
     <div v-if="step === 'done'" class="practice-instructions">
-      <h2>End of practice</h2>
+      <h2>Correct!</h2>
+
       <p>
-        The practice round is now complete. 
+        You correctly identified Sam's blind spot.
       </p>
-      <button @click="$magpie.nextScreen()">Continue</button>
+
+      <p>
+        You are now ready to begin the real experiment.
+      </p>
+
+      <button @click="$magpie.nextScreen()">
+        Continue
+      </button>
     </div>
   </Screen>
 </template>

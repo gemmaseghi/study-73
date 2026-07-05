@@ -51,7 +51,7 @@ export default {
             </p>
 
             <p>
-              You will receive <strong>£3.00</strong> for your participation. Please note that compensation can only be provided if you complete the study. If you experience any technical issues, please contact us via Prolific.
+              You will receive <strong>£3.60</strong> for your participation. Please note that compensation can only be provided if you complete the study. If you experience any technical issues, please contact us via Prolific.
             </p>
 
             <p>
