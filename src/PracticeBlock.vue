@@ -80,11 +80,7 @@
       <h2>Correct!</h2>
 
       <p>
-        You correctly identified Sam's blind spot.
-      </p>
-
-      <p>
-        You are now ready to begin the real experiment.
+        You correctly identified Sam's blind spot. You are now ready to begin the real experiment.
       </p>
 
       <button @click="$magpie.nextScreen()">
