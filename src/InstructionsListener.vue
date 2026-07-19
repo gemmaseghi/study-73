@@ -36,24 +36,24 @@ export default {
       page: 0,
       pages: [
         {
-          title: "Listener Task",
+          title: "Höhrerrolle",
           text: `
             <p>
-              Now let's move to the listener's role!
-              <strong>Your task as the listener is to click on the object that you think the speaker is referring to with their description</strong>.
+              Kommen wir nun zur Höhrerrolle!
+              <strong>Deine Aufgabe in der Höhrerrolle ist es, auf das Objekt zu klicken, das Leo deiner Meinung nach beschreibt</strong>.
             </p>
 
             <p>
-              This time, you will <strong>not</strong> see the asterisk.
+              Dieses Mal wirst du das Sternchen <strong>nicht</strong> sehen.
             </p>
 
             <p>
-              Here is an example of what you will see:
+              Hier ist ein Beispiel dafür, was du sehen wirst:
             </p>
 
             <div class="instruction-figure">
               <p class="image-caption">
-                The lion
+                Der Löwe
               </p>
 
               <img
@@ -66,18 +66,18 @@ export default {
         },
 
         {
-          title: "Listener Practice",
+          title: "Übung Höhrerrolle",
           text: `
             <p>
-              Now it is your turn to play the listener! <strong>Click on the object that you think the speaker is referring to</strong>.
+              Jetzt schlüpfst du in die Höhrerrolle! <strong>Klicke auf das Objekt, auf das sich Leo deiner Meinung nach bezieht</strong>.
             </p>
 
             <p>
-              Then, write a brief explanation of why you think the speaker chose that description.
+              Schreibe dann kurz auf, warum Leo deiner Meinung nach diese Beschreibung gewählt hat.
             </p>
 
             <p>
-              You will select <strong>three objects</strong> as practice.
+              Du wirst zur Übung <strong>drei Objekte</strong> auswählen.
             </p>
           `
         }

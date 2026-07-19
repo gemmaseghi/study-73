@@ -1,10 +1,10 @@
 <template>
   <Screen>
     <div v-if="imagesReady" class="speaker-practice">
-      <h2>Speaker Practice</h2>
+      <h2>Übung Sprecherrolle</h2>
 
       <p class="instruction-text">
-        Let's play the speaker!
+        Jetzt schlüpfst du in die Sprecherrolle!
       </p>
 
       <img
@@ -15,18 +15,18 @@
 
       <div class="response-area">
         <label>
-          Description
+          Beschreibung
           <textarea
             v-model.trim="description"
-            placeholder="Write a description of the object marked with an asterisk (*)"
+            placeholder="Beschreibe das Objekt, das mit einem Sternchen (*) markiert ist."
           />
         </label>
 
         <label>
-          Explanation
+          Begründung
           <textarea
             v-model.trim="explanation"
-            placeholder="Briefly explain why you chose this description."
+            placeholder="Erkläre kurz, warum du diese Beschreibung gewählt hast."
           />
         </label>
       </div>

@@ -7,21 +7,21 @@
 
       <div class="button-container">
         <button v-if="page > 0" @click="previousPage">
-          Back
+          Zurück
         </button>
 
         <button
           v-if="page < pages.length - 1"
           @click="pageForward"
         >
-          Next
+          Weiter
         </button>
 
         <button
           v-else
           @click="pageForward"
         >
-          Continue
+          Weiter
         </button>
       </div>
     </div>
@@ -36,28 +36,28 @@ export default {
       page: 0,
       pages: [
         {
-          title: "Game Structure",
+          title: "Spielablauf",
           text: `
             <p>
-              One final detail: <strong>the experiment is divided into two parts</strong>.
+              Ein letzter Hinweis: <strong>Das Spiel ist in zwei Teile aufgeteilt</strong>.
             </p>
 
             <p>
-              Throughout both parts, <strong>you will always play the listener</strong>. However, your task changes slightly.
+              In beiden Teilen <strong>übernimmst du stets die Höhrerrolle</strong>. Deine Aufgabe ändert sich jedoch leicht.
             </p>
 
             <p>
-              <strong>Part 1</strong><br>
-              <strong>The hidden cell is not shown</strong>. After every block of five grids, <strong>you must infer which cell is hidden from Sam</strong>.
+              <strong>Teil 1</strong><br>
+              <strong>Das verdeckte Feld ist nicht markiert</strong>. Nach jedem Block bestehend aus fünf Gittern <strong>musst du erschließen, welches Feld für Leo verdeckt ist</strong>.
             </p>
 
             <p>
-              <strong>Part 2</strong><br>
-              <strong>The hidden cell is shown in grey</strong> in every grid. Since you already know which cell Sam cannot see, <strong>you will no longer be asked to identify it</strong>. Instead, you only need to select the object that Sam is referring to.
+              <strong>Teil 2</strong><br>
+              <strong>Das verdeckte Feld ist in jedem Gitter grau gefärbt</strong>. Da du bereits weißt, welches Feld Leo nicht sehen kann, <strong>musst du dieses nicht mehr identifizieren</strong>. Stattdessen musst du nur noch das Objekt auswählen, das Leo beschreibt.
             </p>
 
             <p>
-              Below, you can see your view during the first part (left) and during the second part (right).
+              Unten siehst du deine Spielansicht während des ersten Teils (links) und während des zweiten Teils (rechts).
             </p>
 
             <img
@@ -69,18 +69,18 @@ export default {
         },
 
         {
-          title: "Get Ready to Play",
+          title: "Mach dich bereit!",
           text: `
             <p>
-              You are now ready to begin the experiment.
+              Du bist nun startklar für das Spiel.
             </p>
 
             <p>
-              At the end of the experiment, <strong>you will be asked to complete a short questionnaire</strong>.
+              Am Ende des Spiels <strong>wirst du gebeten, einen kurzen Fragebogen auszufüllen</strong>.
             </p>
 
             <p>
-              <strong>Good luck, and have fun!</strong>
+              <strong>Viel Erfolg und viel Spaß!</strong>
             </p>
           `
         }

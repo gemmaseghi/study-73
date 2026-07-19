@@ -1,10 +1,10 @@
 <template>
   <Screen>
     <div v-if="imagesReady" class="listener-practice">
-      <h2>Listener Practice</h2>
+      <h2>Übung Höhrerrolle</h2>
 
       <p class="instruction-text">
-        Click on the object that you think Sam is referring to.
+        Klicke auf das Objekt, von dem du denkst, dass Leo es beschreibt.
       </p>
 
       <h3 class="utterance">
@@ -32,10 +32,10 @@
 
       <div class="response-area">
         <label>
-          Explanation
+          Erklärung
           <textarea
             v-model.trim="explanation"
-            placeholder="Briefly explain why you think Sam chose this description."
+            placeholder="Beschreibe kurz, warum Leo deiner Meinung nach diese Beschreibung gewählt hat."
           />
         </label>
       </div>
@@ -71,19 +71,19 @@ export default {
         {
           id: "listener_practice_size",
           condition: "size",
-          utterance: "The small strawberry",
+          utterance: "Die kleine Erdbeere",
           image: "instructions/listener_practice_size.png"
         },
         {
           id: "listener_practice_filler",
           condition: "filler",
-          utterance: "The bicycle",
+          utterance: "Das Fahrrad",
           image: "instructions/listener_practice_filler.png"
         },
         {
           id: "listener_practice_color",
           condition: "color",
-          utterance: "The red scarf",
+          utterance: "Der rote Schal",
           image: "instructions/listener_practice_color.png"
         }
       ]

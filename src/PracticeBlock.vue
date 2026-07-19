@@ -45,7 +45,7 @@
 
         <div v-if="step === 'blindspot'" class="active-area">
           <h3 class="active-utterance">
-            Select the cell that Sam cannot see
+            Wähle das Feld aus, das Leo nicht sehen kann
           </h3>
 
           <div class="active-grid-wrapper">
@@ -69,22 +69,22 @@
     </div>
 
     <div v-if="step === 'retry'" class="practice-instructions">
-      <h2>Try again</h2>
+      <h2>Versuch's nochmal</h2>
       <p>
-        You selected the wrong blind spot. You will now repeat the practice round.
+        Du hast das falsche verdeckte Feld ausgewählt. Du wirst die Übungsrunde noch einmal wiederholen.
       </p>
-      <button @click="startPractice">Repeat practice</button>
+      <button @click="startPractice">Übung wiederholen</button>
     </div>
 
     <div v-if="step === 'done'" class="practice-instructions">
-      <h2>Correct!</h2>
+      <h2>Richtig!</h2>
 
       <p>
-        You correctly identified Sam's blind spot. You are now ready to begin the real experiment.
+        Du hast das verdeckte Feld richtig identifiziert. Jetzt bist du bereit, mit dem Spiel zu starten.
       </p>
 
       <button @click="$magpie.nextScreen()">
-        Continue
+        Weiter
       </button>
     </div>
   </Screen>

@@ -7,21 +7,21 @@
 
       <div class="button-container">
         <button v-if="page > 0" @click="previousPage">
-          Back
+          Zurück
         </button>
 
         <button
           v-if="page < pages.length - 1"
           @click="pageForward"
         >
-          Next
+          Weiter
         </button>
 
         <button
           v-else
           @click="pageForward"
         >
-          Continue
+          Weiter
         </button>
       </div>
     </div>
@@ -36,68 +36,100 @@ export default {
       page: 0,
       pages: [
         {
-          title: "Consent Form",
+          title: "Einverständniserklärung",
           text: `
             <p>
-              Thank you for your interest in our study. Please read the following information before deciding whether to participate. Your participation is entirely voluntary.
+              Vielen Dank für dein Interesse an unserer Studie. Bitte lies dir die folgenden Informationen durch, bevor du dich für eine Teilnahme entscheidest. Deine Teilnahme ist freiwillig. Bei weiteren Fragen zur Studie kannst du dich gerne per E-Mail an gemma.seghi@uni-tuebingen.de wenden. Klicke am Ende dieser Seite auf die Schaltfläche „Weiter“, um fortzufahren.
             </p>
 
             <p>
-              Your data will be stored under a randomly assigned participant ID and will therefore be fully anonymized. The data will be stored on a server at the University of Tübingen.
+              Kontakt:
+              Gemma Seghi
+              Seminar für Sprachwissenschaft
+              Keplerstr. 2, 72076 Tübingen
+              gemma.seghi@uni-tuebingen.de
             </p>
 
             <p>
-              All individuals with access to the data are required to maintain confidentiality. If the results of this study are published, they will be reported only in anonymized form, and it will not be possible to identify you from the published data.
+              <strong>Informationen zur Studie</strong>.
             </p>
 
             <p>
-              You will receive <strong>£3.60</strong> for your participation. Please note that compensation can only be provided if you complete the study. If you experience any technical issues, please contact us via Prolific.
+              1. Zweck: In dieser Studie untersuchen wir, wie wir Objekte anhand von Beschreibungen auswählen. Durch deine Teilnahme erhälst du einen Einblick in unsere Forschung. Bei Interesse erklären wir dir im Anschluss gerne die konkreten Ziele dieser Studie. Außerdem hilfst du uns dabei, neue Erkenntnisse über die menschliche Kognition zu gewinnen.
             </p>
 
             <p>
-              By continuing to the next screen, you confirm that you have read this information and agree to participate in the study.
+              2. Datenschutz: Wir speichern die gesammelten Daten unter einer zufällig vergebenen Teilnahme-ID und somit vollständig anonymisiert auf einem Server der Universität Tübingen. Alle Personen, die Zugriff auf die personenbezogenen Daten haben, sind zur Geheimhaltung verpflichtet. Sollten Daten aus dieser Studie veröffentlicht werden, geschieht dies in anonymisierter Form. Deine Daten können dir daher nicht zugeordnet werden.
             </p>
+
+            <p>
+              3. Vergütung: Für deine Teilnahme erhälst du 0,5 Versuchspersonenstunden.           
+            </p>
+
+            <p>
+              4. Freiwillige Teilnahme und Recht auf Teilnahmeabbruch: Deine Teilnahme an dieser Studie ist vollkommen freiwillig. Du kannst die Studie jedezeit abbrechen. Dir entstehen dadurch keinerlei Nachteile. Du musst keinen Grund für den Abbruch der Studie angeben. Wenn du vor Abschluss der Datenerhebung die Studie abbrichst, werden deine Daten gelöscht. Bitte beachte, dass eine Vergütung nicht möglich ist, wenn du deine Teilnahme vor Ende der Studie abbrichst. Sollten technische Probleme auftreten, sende uns bitte eine Nachricht über die angegebene E-Mail-Adresse.           
+            </p>
+
+            <p>
+              5. Risiken: Die Teilnahme birgt keinerlei körperliche Risiken.           
+            </p>
+
+            <p>
+              6. Sensible Daten: Wir fragen nicht nach sensiblen personenbezogenen Daten.           
+            </p>            
+
+            <p>
+              7. Datenspeicherung und -weitergabe: Wir werden diese Daten an andere Forschende weitergeben. Zu diesem Zweck werden wir sie auf unserer Website der Open Science Foundation veröffentlichen. Sollte die Studie nicht zu einer wissenschaftlichen Veröffentlichung führen, werden wir die Daten für maximal fünf Jahre auf einem passwortgeschützten Server der Universität speichern. Da die Daten vollständig anonymisiert gespeichert werden, können wir deine Daten nach der Speicherung nicht mehr löschen.        
+            </p>  
+
+            <p>
+              Einwilligung
+              · Ich bestätige, dass ich volljährig bin.
+              · Ich stimme der Teilnahme an der folgenden Studie zu.
+              · Ich kann die Studie jederzeit abbrechen.
+              · Ich habe keine weiteren Fragen.        
+            </p>            
           `
         },
         {
-          title: "Welcome!",
+          title: "Willkommen!",
           text: `
             <p>
-              In this experiment, you will play a coordination game with a virtual speaker named <strong>Sam</strong>.
+              In diesem Experiment spielst du ein Koordinationsspiel mit einem virtuellen Spieler namens <strong>Leo</strong>.
             </p>
 
             <p>
-              The game has two roles: <strong>Speaker</strong> and <strong>Listener</strong>.
+              Das Spiel umfasst zwei Rollen: <strong>Die Sprecherrolle</strong> und <strong>die Höhrerrolle</strong>.
             </p>
 
             <p>
-              During the real experiment, <strong>Sam will always be the speaker</strong> and <strong>you will always be the listener</strong>.
+              Während des Spiels <strong>wird Leo immer die Sprecherrolle übernehmen</strong> und <strong>du wirst immer die Höhrerrolle übernhemen</strong>.
             </p>
 
             <p>
-              <strong>Before the real game starts, however, you will briefly experience both roles</strong> so that you can understand how the game works.
+              <strong>Bevor das Spiel startet, wirst du jedoch kurz in beide Rollen schlüpfen</strong>, um zu verstehen, wie das Spiel funktioniert.
             </p>
 
           `
         },
 
         {
-          title: "Speaker Task",
+          title: "Die Sprecherrolle",
           text: `
             <p>
-              Let's start with the speaker's role.
+              Beginnen wir mit der Sprecherrolle.
 
-              <strong>Your task as the speaker is to describe the object marked with an asterisk (*) so that the listener can identify it</strong>.
+              <strong>Deine Aufgabe in der Sprecherrolle ist es, das mit einem Sternchen (*) markierte Objekt so zu beschreiben, dass Leo es identifizieren kann</strong>.
 
-              The listener does <strong>not</strong> see the asterisk.
+              Leo sieht das Sternchen <strong>nicht</strong>.
             </p>
 
             <p>
-              You <strong>are not allowed to use location words</strong>, such as "top left" or "bottom right", in your descriptions.
+              Du <strong>darfst keine Positionsangaben</strong> wie "oben links" oder "unten rechts" in deinen Beschreibungen verwenden.
             </p>
 
             <p>
-              Here is an example of what you will see:
+              Hier ist ein Beispiel dafür, was du sehen wirst:
             </p>
 
             <div class="instruction-figure">
@@ -108,31 +140,29 @@ export default {
               />
 
               <p>
-                A possible description in this case could be: <strong>The t-shirt</strong>.
+                Eine mögliche Beschreibung wäre in diesem Fall: <strong>Das T-Shirt</strong>.
               </p>
             </div>
           `
         },
 
         {
-          title: "Speaker Practice",
+          title: "Übung Sprecherrolle",
           text: `
             <p>
-              Now it is your turn to play the speaker!
+              Jetzt schlüpst du in die Sprecherrolle!
             </p>
 
             <p>
-              For each grid, <strong>write a description of the object marked with an 
-              asterisk (*)</strong>. The listener will use your description
-              to identify the object.
+              Schreibe für jedes Gitter <strong>eine Beschreibung des mit dem Sternchen (*) markierten Objekts</strong>. Leo wird deine Beschreibung nutzen, um das Objekt zu identifizieren. 
             </p>
 
             <p>
-              Then, write a brief explanation of why you chose that description.
+              Schreibe dann eine kurze Erklärung, warum du diese Beschreibung gewählt hast.
             </p>
 
             <p>
-              You will describe <strong>three objects</strong> as practice.
+              Du wirst zur Übung <strong>drei Objekte</strong> beschreiben.
             </p>
 
           `

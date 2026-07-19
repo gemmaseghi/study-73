@@ -36,22 +36,22 @@ export default {
       page: 0,
       pages: [
         {
-          title: "The Game",
+          title: "Das Spiel",
           text: `
             <p>
-              In the real game, Sam will always be the speaker, and you will always be the listener.
+              Im eigentlichen Spiel übernimmt Leo immer die Sprecherrolle und du übernimmst immer die Höhrerrolle.
               
-              However, <strong>the real game has a twist: Sam has a blindspot!</strong> 
+              Allerdings <strong>hat das Spiel eine Besonderheit: Aus Leos Perspektive gibt es ein verdecktes Feld!</strong> 
             </p>
 
             <p>
-              <strong>In Sam's view, one of the objects in each grid will be hidden by an occluder</strong>. As a result, <strong>Sam will only see three objects in each grid</strong>, and the fourth grid will be marked in grey. 
+              <strong>Aus Leos Perspektive ist eines der Objekte in jedem Gitter durch ein Hindernis verdeckt</strong>. Daher <strong>sieht Leo in jedem Gitter nur drei Objekte</strong> und das vierte Feld ist grau markiert. 
               
-              The grey cell thus represents Sam's blindspot.
+              Dieses graue Feld stellt somit das Feld dar, das Leo nicht sieht.
             </p>
 
             <p>
-              Here is an example of what Sam sees (on the left) and what you see (on the right):
+              Hier ist ein Beispiel dafür, was Leo sieht (links) und was du siehst (rechts):
             </p>
 
             <div class="instruction-figure">
@@ -63,38 +63,38 @@ export default {
             </div>
 
             <p>
-              However, <strong>Sam doesn't know that he has a blindspot</strong>. He thinks that you see only three objects as well.
+              Allerdings <strong>weiß Leo nicht, dass er eins der Felder nicht sieht</strong>. Er denkt, dass du auch nur drei Objekte siehst.
               
-              Apart from the object hidden to Sam, you and Sam will see the same objects.
+              Abgesehen von dem Objekt, das für Leo nicht sichtbar ist, sehen du und Leo dieselben Objekte.
             </p>
 
             <p>
-              As a result, in addition to clicking on the intended object based on Sam's description, <strong>you will also be asked to infer which cell is hidden from Sam</strong>.
+              Deswegen ist deine Aufgabe nicht nur, anhand von Leos Beschreibung auf das entsprechende Objekt zu klicken, sondern auch <strong>herauszufinden, welches Feld für Leo nicht sichtbar ist</strong>.
             </p>
 
           `
         },
 
         {
-          title: "Listener Block Practice",
+          title: "Übung Höhrerrolle",
           text: `
 
             <p>
-              <strong>The grids of objects will be presented in blocks of five</strong>. <strong>Within each block, Sam's blindspot always stays in the same position. Across blocks, however, it changes position.</strong>
+              <strong>Die Gitter mit den Objekten werden in Fünferblöcken gezeigt</strong>. <strong>Innerhalb jedes Blocks bleibt das für Leo verdeckte Feld immer an derselben Position. Von Block zu Block wechselt es jedoch die Position.</strong>
             </p>
           
             <p>
-              <strong>Select the intended object only in the big grid in the middle of the screen</strong>. 
+              <strong>Du musst das gesuchte Objekt nur im großen Gitter in der Mitte des Bildschirms auswählen</strong>. 
               
-              After each selection, the completed grid will move to the top of the screen with your chosen object marked by a black dot. 
+              Nach jeder Auswahl wandert das bearbeitete Gitter an den oberen Bildschirmrand, wobei das von dir ausgewählte Objekt mit einem schwarzen Punkt markiert wird. 
             </p>
 
             <p>
-              After the fifth grid, <strong>you will be asked to select the cell that you think is hidden from Sam in an empty grid</strong>.
+              Nach dem fünften Gitter <strong>wirst du dazu aufgefordert, in einem leeren Gitter das Feld auszuwählen, von dem du glaubst, dass es für Leo verdeckt ist</strong>.
             </p>
 
             <p>
-              Here is an example of what you will see at the end of a block of five grids:
+              Hier ist ein Beispiel dafür, was du am Endes eines Fünferblocks sehen wirst:
             </p>
 
             <div class="instruction-figure">
@@ -106,7 +106,7 @@ export default {
             </div>
 
             <p>
-              You will now complete a short practice round of the real game.
+              Du wirst nun eine kurze Übungsrunde absolvieren.
             </p>
 
           `

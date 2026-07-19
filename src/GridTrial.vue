@@ -42,7 +42,7 @@
 
       <div v-if="step === 'blindspot'" class="active-area">
         <h3 class="active-utterance">
-          {{ blindSpotError ? "You selected the wrong hidden cell, please try again" : "Select the cell that Sam cannot see" }}
+          {{ blindSpotError ? "Du hast das falsche verdeckte Feld ausgewählt, bitte versuch es erneut" : "Wähle das Feld aus, das Leo nicht sehen kann" }}
         </h3>
 
         <div class="active-grid-wrapper">
