@@ -27,18 +27,18 @@
 </template>
 
 <script>
-import trials, { trialBlocks } from "./trials";
-import practiceTrials from "./practiceTrials";
+import trials, { trialBlocks } from "./Experiments/main/trials";
+import practiceTrials from "./Experiments/main/practiceTrials";
 
-import InstructionsSpeaker from "./InstructionsSpeaker.vue";
-import InstructionsListener from "./InstructionsListener.vue";
-import InstructionsBlock from "./InstructionsBlock.vue";
-import InstructionsTwoParts from "./InstructionsTwoParts.vue";
-import PracticeSpeaker from "./PracticeSpeaker.vue";
-import PracticeListener from "./PracticeListener.vue";
-import PracticeBlock from "./PracticeBlock.vue";
-import GridTrial from "./GridTrial.vue";
-import Questionnaire from "./Questionnaire.vue";
+import InstructionsSpeaker from "./Experiments/main/InstructionsSpeaker.vue";
+import InstructionsListener from "./Experiments/main/InstructionsListener.vue";
+import InstructionsBlock from "./Experiments/main/InstructionsBlock.vue";
+import InstructionsTwoParts from "./Experiments/main/InstructionsTwoParts.vue";
+import PracticeSpeaker from "./Experiments/main/PracticeSpeaker.vue";
+import PracticeListener from "./Experiments/main/PracticeListener.vue";
+import PracticeBlock from "./Experiments/main/PracticeBlock.vue";
+import GridTrial from "./Experiments/main/GridTrial.vue";
+import Questionnaire from "./Experiments/main/Questionnaire.vue";
 
 export default {
   name: "App",
