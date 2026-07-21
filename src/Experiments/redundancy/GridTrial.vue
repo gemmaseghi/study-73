@@ -12,21 +12,8 @@
         </p>
       </header>
 
-      <!-- Grid on the left, larger grey scene on the right -->
       <div class="stimulus-row">
-        <section class="stimulus-panel grid-panel">
-          <p class="panel-label">Object grid</p>
-
-          <div class="image-wrapper grid-image-wrapper">
-            <img
-              :key="currentTrial.grid_image"
-              :src="currentTrial.grid_image"
-              alt="Grid containing four possible objects"
-              class="grid-image"
-            />
-          </div>
-        </section>
-
+        <!-- Larger scene on the left -->
         <section class="stimulus-panel scene-panel">
           <p class="panel-label">Scene</p>
 
@@ -36,6 +23,20 @@
               :src="currentTrial.scene_image"
               alt="Grey scene with three coloured stickers and a red arrow"
               class="scene-image"
+            />
+          </div>
+        </section>
+
+        <!-- Smaller grid on the right -->
+        <section class="stimulus-panel grid-panel">
+          <p class="panel-label">Object grid</p>
+
+          <div class="image-wrapper grid-image-wrapper">
+            <img
+              :key="currentTrial.grid_image"
+              :src="currentTrial.grid_image"
+              alt="Grid containing four possible objects"
+              class="grid-image"
             />
           </div>
         </section>
@@ -56,7 +57,7 @@
           ref="descriptionBox"
           v-model="description"
           class="response-box"
-          rows="4"
+          rows="1"
           placeholder="Write your description here..."
           @input="clearError"
           @keydown.ctrl.enter.prevent="submitDescription"
@@ -329,10 +330,10 @@ export default {
 .stimulus-row {
   display: grid;
   grid-template-columns:
-    minmax(230px, 0.8fr)
-    minmax(400px, 1.4fr);
+    minmax(420px, 1.5fr)
+    minmax(230px, 0.7fr);
   align-items: center;
-  gap: 38px;
+  gap: 12px;
 
   width: 100%;
 }
@@ -361,11 +362,11 @@ export default {
 }
 
 .grid-image-wrapper {
-  max-width: 390px;
+  max-width: 350px;
 }
 
 .scene-image-wrapper {
-  max-width: 690px;
+  max-width: 700px;
 }
 
 .grid-image,
@@ -377,15 +378,15 @@ export default {
 }
 
 .grid-image {
-  max-height: 410px;
+  max-height: 300px;
 }
 
 .scene-image {
-  max-height: 540px;
+  max-height: 500px;
 }
 
 .response-area {
-  width: min(850px, 100%);
+  width: min(600px, 100%);
   margin-top: 30px;
 }
 
@@ -404,7 +405,7 @@ export default {
   display: block;
 
   width: 100%;
-  min-height: 115px;
+  min-height: 60px;
   padding: 13px 14px;
 
   resize: vertical;
