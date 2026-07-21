@@ -36,7 +36,7 @@ export default {
       page: 0,
       pages: [
         {
-          title: "Welcome to the First Experiment!",
+          title: "Willkommen zum ersten Experiment!",
           text: `
             <p>
               The first experiment is a task that we are administering to a group of children. We also need adults to complete the task as a control group. Because the task is the same for both children and adults, it is normal if you find it very easy.
