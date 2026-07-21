@@ -265,7 +265,6 @@ const sceneGroups = [
 
 ];
 
-export default sceneGroups;
 
 function shuffle(array) {
   const copy = [...array];
@@ -278,6 +277,12 @@ function shuffle(array) {
   return copy;
 }
 
-const randomizedTrials = shuffle(sceneGroups).flatMap(group =>
-  shuffle(group.trials)
+const randomizedSceneGroups = shuffle(sceneGroups).map(
+  (group, index) => ({
+    ...group,
+    presentation_order: index + 1,
+    trials: shuffle(group.trials)
+  })
 );
+
+export default randomizedSceneGroups;

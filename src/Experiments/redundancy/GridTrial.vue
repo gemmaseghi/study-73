@@ -1,255 +1,288 @@
 <template>
   <Screen>
-    <div v-if="imagesReady" class="block-layout">
-      <div class="history-row">
-        <div
-          v-for="(trial, index) in block"
-          :key="trial.id"
-          class="history-slot"
-          :class="{ empty: !responses[index] }"
+    <div v-if="imagesReady" class="redundancy-layout">
+      <!-- Scene number refers to presentation order -->
+      <header class="trial-header">
+        <h1 class="scene-title">
+          Scene {{ sceneNumber }}
+        </h1>
+
+        <p class="trial-progress">
+          Object {{ currentTrialIndex + 1 }} of {{ trials.length }}
+        </p>
+      </header>
+
+      <!-- Grid on the left, larger grey scene on the right -->
+      <div class="stimulus-row">
+        <section class="stimulus-panel grid-panel">
+          <p class="panel-label">Object grid</p>
+
+          <div class="image-wrapper grid-image-wrapper">
+            <img
+              :key="currentTrial.grid_image"
+              :src="currentTrial.grid_image"
+              alt="Grid containing four possible objects"
+              class="grid-image"
+            />
+          </div>
+        </section>
+
+        <section class="stimulus-panel scene-panel">
+          <p class="panel-label">Scene</p>
+
+          <div class="image-wrapper scene-image-wrapper">
+            <img
+              :key="currentTrial.scene_image"
+              :src="currentTrial.scene_image"
+              alt="Grey scene with three coloured stickers and a red arrow"
+              class="scene-image"
+            />
+          </div>
+        </section>
+      </div>
+
+      <!-- Written response -->
+      <div class="response-area">
+        <label
+          for="object-description"
+          class="response-label"
         >
-          <template v-if="responses[index]">
-            <div class="history-utterance">{{ trial.utterance }}</div>
+          Describe the object indicated by the red arrow so that the other
+          participant can identify it in the grid.
+        </label>
 
-            <div class="history-grid-wrapper">
-              <img :src="trial.image" class="history-stimulus" />
-              
-              <div
-                class="selection-marker small"
-                :class="responses[index].response"
-              />
-              
-            </div>
-          </template>
-        </div>
-      </div>
+        <textarea
+          id="object-description"
+          ref="descriptionBox"
+          v-model="description"
+          class="response-box"
+          rows="4"
+          placeholder="Write your description here..."
+          @input="clearError"
+          @keydown.ctrl.enter.prevent="submitDescription"
+          @keydown.meta.enter.prevent="submitDescription"
+        />
 
-      <div
-        v-if="currentGrid < block.length && !responses[currentGrid]"
-        class="active-area"
-      >
-        <h3 class="active-utterance">{{ block[currentGrid].utterance }}</h3>
+        <p
+          v-if="showError"
+          class="error-message"
+        >
+          Please write a description before continuing.
+        </p>
 
-        <div class="active-grid-wrapper">
-          <img :src="block[currentGrid].image" class="active-stimulus" />
-
-          <button class="cell top-left" @click="selectCell('topLeft')" />
-          <button class="cell top-right" @click="selectCell('topRight')" />
-          <button class="cell bottom-left" @click="selectCell('bottomLeft')" />
-          <button class="cell bottom-right" @click="selectCell('bottomRight')" />
-        </div>
-      </div>
-
-      <div v-if="step === 'blindspot'" class="active-area">
-        <h3 class="active-utterance">
-          {{ blindSpotError ? "Du hast das falsche verdeckte Feld ausgewählt, bitte versuch es erneut" : "Wähle das Feld aus, das Leo nicht sehen kann" }}
-        </h3>
-
-        <div class="active-grid-wrapper">
-          <img :src="emptyGridImage" class="active-stimulus" />
-
-          <button class="cell top-left" @click="selectBlindSpot('topLeft')" />
-          <button class="cell top-right" @click="selectBlindSpot('topRight')" />
-          <button class="cell bottom-left" @click="selectBlindSpot('bottomLeft')" />
-          <button class="cell bottom-right" @click="selectBlindSpot('bottomRight')" />
-          
-          <div
-            v-if="blindSpotResponse"
-            class="selection-marker blindspot-marker"
-            :class="blindSpotResponse"
-          />
-          
-        </div>
-      </div>
-
-      <div v-if="step === 'next'" class="active-area">
-        <div class="next-square" @click="finishBlock()">
-          <span>Next</span>
-        </div>
+        <button
+          type="button"
+          class="continue-button"
+          :disabled="isSubmitting"
+          @click="submitDescription"
+        >
+          Continue
+        </button>
       </div>
     </div>
 
-    <div v-else class="preload-placeholder"></div>
+    <div v-else class="preload-placeholder">
+      <p>Loading...</p>
+    </div>
   </Screen>
 </template>
 
 <script>
 export default {
-  name: "GridTrial",
+  name: "RedundancyGrid",
+
   props: {
-    block: {
+    trials: {
       type: Array,
+      required: true
+    },
+
+    sceneId: {
+      type: Number,
+      required: true
+    },
+
+    sceneNumber: {
+      type: Number,
       required: true
     }
   },
+
   data() {
     return {
-      currentGrid: 0,
-      step: "objects",
-      blockStartTime: null,
-      gridStartTime: null,
-      blindSpotStartTime: null,
+      currentTrialIndex: 0,
+      description: "",
       responses: [],
-      blindSpotResponse: null,
-      blindSpotAttempts: [],
-      blindSpotError: false,
       imagesReady: false,
-      emptyGridImage: "stimuli/empty_grid.png"
+      showError: false,
+      isSubmitting: false,
+      sceneStartTime: null,
+      trialStartTime: null
     };
   },
+
   computed: {
-    needsBlindSpotProbe() {
-      const blockID = Number(this.block[0].block_id);
-      return blockID <= 5;
+    currentTrial() {
+      return this.trials[this.currentTrialIndex] || {};
     }
   },
+
   mounted() {
-    this.preloadBlockImages().then(() => {
+    if (this.trials.length === 0) {
+      console.error(
+        "RedundancyGrid received no trials. Check the scene prop."
+      );
+
+      return;
+    }
+
+    this.preloadSceneImages().then(() => {
       this.imagesReady = true;
 
       this.$nextTick(() => {
         requestAnimationFrame(() => {
-          this.blockStartTime = performance.now();
-          this.gridStartTime = performance.now();
+          const now = performance.now();
+
+          this.sceneStartTime = now;
+          this.trialStartTime = now;
+
+          this.focusDescriptionBox();
         });
       });
     });
   },
-  methods: {
-    preloadBlockImages() {
-      const imagePaths = this.block.map(trial => trial.image);
 
-      if (this.needsBlindSpotProbe) {
-        imagePaths.push(this.emptyGridImage);
-      }
+  methods: {
+    preloadSceneImages() {
+      const imagePaths = [];
+
+      this.trials.forEach(trial => {
+        if (trial.scene_image) {
+          imagePaths.push(trial.scene_image);
+        }
+
+        if (trial.grid_image) {
+          imagePaths.push(trial.grid_image);
+        }
+      });
+
+      const uniquePaths = [...new Set(imagePaths)];
 
       const preloadOne = src =>
         new Promise(resolve => {
           const img = new Image();
+
           img.onload = resolve;
-          img.onerror = resolve;
+
+          /*
+           * Resolve even if an image fails, so the experiment does not
+           * remain stuck permanently on the loading screen.
+           */
+          img.onerror = () => {
+            console.error(`Could not preload image: ${src}`);
+            resolve();
+          };
+
           img.src = src;
         });
 
-      return Promise.all(imagePaths.map(preloadOne));
+      return Promise.all(uniquePaths.map(preloadOne));
     },
 
-    selectCell(answer) {
-      const now = performance.now();
-      const trial = this.block[this.currentGrid];
-
-      this.$set(this.responses, this.currentGrid, {
-        trial_id: trial.id,
-        phase: trial.phase,
-        block_id: trial.block_id,
-        trial_in_block: trial.trial_in_block,
-        condition: trial.condition,
-        utterance: trial.utterance,
-        blind_spot: trial.blindSpot,
-        correct_answer: trial.correctAnswer,
-        response: answer,
-        correct: answer === trial.correctAnswer,
-        rt: now - this.gridStartTime
-      });
-
-      if (this.currentGrid < this.block.length - 1) {
-        this.currentGrid += 1;
-
-        this.$nextTick(() => {
-          requestAnimationFrame(() => {
-            this.gridStartTime = performance.now();
-          });
-        });
-      } else {
-        this.currentGrid += 1;
-
-        if (this.needsBlindSpotProbe) {
-          this.step = "blindspot";
-
-          this.$nextTick(() => {
-            requestAnimationFrame(() => {
-              this.blindSpotStartTime = performance.now();
-            });
-          });
-        } else {
-          this.step = "next";
-        }
+    focusDescriptionBox() {
+      if (this.$refs.descriptionBox) {
+        this.$refs.descriptionBox.focus();
       }
     },
 
-    selectBlindSpot(answer) {
-      const now = performance.now();
-      const correctBlindSpot = this.block[0].blindSpot;
-      const isCorrect = answer === correctBlindSpot;
-
-      this.blindSpotResponse = answer;
-
-      this.blindSpotAttempts.push({
-        response: answer,
-        correct_answer: correctBlindSpot,
-        correct: isCorrect,
-        rt: now - this.blindSpotStartTime
-      });
-
-      if (isCorrect) {
-        this.$nextTick(() => {
-          requestAnimationFrame(() => {
-            this.finishBlock({
-              response: answer,
-              correct_answer: correctBlindSpot,
-              correct: true,
-              rt: now - this.blindSpotStartTime,
-              attempts: this.blindSpotAttempts.length
-            });
-          });
-        });
-      } else {
-        setTimeout(() => {
-          this.blindSpotResponse = null;
-          this.blindSpotError = true;
-
-          this.$nextTick(() => {
-            requestAnimationFrame(() => {
-              this.blindSpotStartTime = performance.now();
-            });
-          });
-        }, 250);
+    clearError() {
+      if (this.description.trim()) {
+        this.showError = false;
       }
     },
 
-    finishBlock(blindSpotData = null) {
+    submitDescription() {
+      if (this.isSubmitting) {
+        return;
+      }
+
+      const cleanedDescription = this.description.trim();
+
+      if (!cleanedDescription) {
+        this.showError = true;
+        this.focusDescriptionBox();
+        return;
+      }
+
+      this.isSubmitting = true;
+      this.showError = false;
+
+      const now = performance.now();
+      const trial = this.currentTrial;
+
+      this.responses.push({
+        trial_id: trial.trial_id,
+        scene_id: this.sceneId,
+        scene_presentation_order: this.sceneNumber,
+        version: trial.version,
+        target_object: trial.target_object,
+        target_color: trial.target_color,
+        target_position: trial.target_position,
+        scene_image: trial.scene_image,
+        grid_image: trial.grid_image,
+        description: cleanedDescription,
+        rt: now - this.trialStartTime
+      });
+
+      const isLastTrial =
+        this.currentTrialIndex >= this.trials.length - 1;
+
+      if (isLastTrial) {
+        this.finishScene();
+        return;
+      }
+
+      this.currentTrialIndex += 1;
+      this.description = "";
+
+      this.$nextTick(() => {
+        requestAnimationFrame(() => {
+          this.trialStartTime = performance.now();
+          this.isSubmitting = false;
+          this.focusDescriptionBox();
+        });
+      });
+    },
+
+    finishScene() {
       const endTime = performance.now();
-      const blockRT = endTime - this.blockStartTime;
-      const blockID = this.block[0].block_id;
-      const phase = this.block[0].phase;
+      const sceneRT = endTime - this.sceneStartTime;
 
       const trialData = {
-        phase,
-        block_id: blockID,
-        block_rt: blockRT,
-        block_responses_json: JSON.stringify(this.responses)
+        experiment: "redundancy",
+        phase: "redundancy",
+        scene_id: this.sceneId,
+        scene_presentation_order: this.sceneNumber,
+        scene_rt: sceneRT,
+        number_of_objects: this.responses.length,
+        responses_json: JSON.stringify(this.responses)
       };
 
-      if (blindSpotData) {
-        trialData.blind_spot_response = blindSpotData.response;
-        trialData.blind_spot_correct_answer = blindSpotData.correct_answer;
-        trialData.blind_spot_correct = blindSpotData.correct;
-        trialData.blind_spot_rt = blindSpotData.rt;
-        trialData.blind_spot_attempts = blindSpotData.attempts;
-        trialData.blind_spot_attempts_json = JSON.stringify(this.blindSpotAttempts);
-      }
+      /*
+       * Save separate columns as well as the JSON representation.
+       * This makes the downloaded data easier to inspect and analyse.
+       */
+      this.responses.forEach((response, index) => {
+        const n = index + 1;
 
-      this.responses.forEach((r, i) => {
-        const n = i + 1;
-        trialData[`trial_id_${n}`] = r.trial_id;
-        trialData[`trial_in_block_${n}`] = r.trial_in_block;
-        trialData[`condition_${n}`] = r.condition;
-        trialData[`utterance_${n}`] = r.utterance;
-        trialData[`blind_spot_${n}`] = r.blind_spot;
-        trialData[`correct_answer_${n}`] = r.correct_answer;
-        trialData[`response_${n}`] = r.response;
-        trialData[`correct_${n}`] = r.correct;
-        trialData[`rt_${n}`] = r.rt;
+        trialData[`trial_id_${n}`] = response.trial_id;
+        trialData[`version_${n}`] = response.version;
+        trialData[`target_object_${n}`] = response.target_object;
+        trialData[`target_color_${n}`] = response.target_color;
+        trialData[`description_${n}`] = response.description;
+        trialData[`rt_${n}`] = response.rt;
+        trialData[`scene_image_${n}`] = response.scene_image;
+        trialData[`grid_image_${n}`] = response.grid_image;
       });
 
       this.$magpie.addTrialData(trialData);
@@ -260,189 +293,207 @@ export default {
 </script>
 
 <style scoped>
-.block-layout {
-  width: 100%;
+.redundancy-layout {
+  box-sizing: border-box;
+  width: min(1200px, 96%);
   min-height: 90vh;
+  margin: 0 auto;
+  padding: 18px 16px 40px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.history-row {
+.trial-header {
   width: 100%;
-  height: 190px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-
-.history-slot {
-  width: 170px;
-  height: 185px;
-}
-
-.history-slot.empty {
-  visibility: hidden;
-}
-
-.history-utterance {
+  margin-bottom: 22px;
   text-align: center;
-  font-size: 13px;
-  height: 28px;
-  margin-bottom: 4px;
 }
 
-.history-grid-wrapper {
-  position: relative;
-  width: 170px;
-  height: 170px;
-  opacity: 0.85;
-  line-height: 0;
-}
-
-.history-stimulus {
-  width: 100%;
-  display: block;
-}
-
-.active-area {
-  height: 520px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.active-utterance {
-  text-align: center;
-  font-size: 26px;
-  min-height: 42px;
-  margin: 0 0 12px 0;
-}
-
-.active-grid-wrapper {
-  position: relative;
-  width: min(440px, 62vh);
-  line-height: 0;
-}
-
-.active-stimulus {
-  width: 100%;
-  display: block;
-}
-
-.cell {
-  position: absolute;
-  background: transparent;
-  border: none;
-  padding: 0;
+.scene-title {
   margin: 0;
-  appearance: none;
-  -webkit-appearance: none;
-  opacity: 0;
-  cursor: pointer;
+  font-size: 32px;
+  font-weight: 600;
 }
 
-.top-left {
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 50%;
+.trial-progress {
+  margin: 6px 0 0;
+  font-size: 15px;
 }
 
-.top-right {
-  top: 0;
-  left: 50%;
-  width: 50%;
-  height: 50%;
+/*
+ * The first column contains the smaller grid.
+ * The second column contains the larger grey scene.
+ */
+.stimulus-row {
+  display: grid;
+  grid-template-columns:
+    minmax(230px, 0.8fr)
+    minmax(400px, 1.4fr);
+  align-items: center;
+  gap: 38px;
+
+  width: 100%;
 }
 
-.bottom-left {
-  top: 50%;
-  left: 0;
-  width: 50%;
-  height: 50%;
+.stimulus-panel {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.bottom-right {
-  top: 50%;
-  left: 50%;
-  width: 50%;
-  height: 50%;
+.panel-label {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
 }
 
+.image-wrapper {
+  width: 100%;
 
-.selection-marker {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: black;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.selection-marker.small {
-  width: 12px;
-  height: 12px;
+.grid-image-wrapper {
+  max-width: 390px;
 }
 
-.blindspot-marker {
-  width: 18px;
-  height: 18px;
-  background: #111;
+.scene-image-wrapper {
+  max-width: 690px;
 }
 
-.selection-marker.topLeft {
-  top: 25%;
-  left: 25%;
+.grid-image,
+.scene-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
-.selection-marker.topRight {
-  top: 25%;
-  left: 75%;
+.grid-image {
+  max-height: 410px;
 }
 
-.selection-marker.bottomLeft {
-  top: 75%;
-  left: 25%;
+.scene-image {
+  max-height: 540px;
 }
 
-.selection-marker.bottomRight {
-  top: 75%;
-  left: 75%;
+.response-area {
+  width: min(850px, 100%);
+  margin-top: 30px;
 }
 
+.response-label {
+  display: block;
+  margin-bottom: 10px;
 
-.next-square {
-  width: min(380px, 54vh);
-  aspect-ratio: 1;
-  margin-top: 60px;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.response-box {
+  box-sizing: border-box;
+  display: block;
+
+  width: 100%;
+  min-height: 115px;
+  padding: 13px 14px;
+
+  resize: vertical;
+
+  border: 1px solid #666;
+  border-radius: 5px;
 
   background: white;
-  border: 2px solid black;
-  border-radius: 4px;
+  color: black;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  cursor: pointer;
-  user-select: none;
-
-  transition: background-color 0.15s ease,
-              transform 0.08s ease;
+  font: inherit;
+  font-size: 17px;
+  line-height: 1.5;
 }
 
-.next-square span {
-  font-size: 56px;
-  font-weight: 600;
-  color: #2b6cff;
+.response-box:focus {
+  outline: 2px solid #2b6cff;
+  outline-offset: 2px;
+}
+
+.error-message {
+  margin: 8px 0 0;
+  color: #b00020;
+  font-size: 15px;
+}
+
+.continue-button {
+  display: block;
+
+  min-width: 130px;
+  margin: 20px auto 0;
+  padding: 10px 24px;
+
+  border: 1px solid #333;
+  border-radius: 5px;
+
+  background: white;
+  color: black;
+
+  cursor: pointer;
+  font: inherit;
+  font-size: 17px;
+}
+
+.continue-button:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.continue-button:focus {
+  outline: 2px solid #2b6cff;
+  outline-offset: 2px;
+}
+
+.continue-button:disabled {
+  cursor: default;
+  opacity: 0.6;
 }
 
 .preload-placeholder {
   width: 100%;
   min-height: 90vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+ * On smaller displays, stack the images vertically.
+ * The grey scene remains above the response area.
+ */
+@media (max-width: 800px) {
+  .stimulus-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .grid-image-wrapper,
+  .scene-image-wrapper {
+    max-width: 600px;
+  }
+
+  .grid-image,
+  .scene-image {
+    max-height: none;
+  }
+
+  .scene-title {
+    font-size: 28px;
+  }
 }
 </style>
