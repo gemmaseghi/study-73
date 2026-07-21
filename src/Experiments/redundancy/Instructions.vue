@@ -7,21 +7,21 @@
 
       <div class="button-container">
         <button v-if="page > 0" @click="previousPage">
-          Back
+          Zurück
         </button>
 
         <button
           v-if="page < pages.length - 1"
           @click="pageForward"
         >
-          Next
+          Weiter
         </button>
 
         <button
           v-else
           @click="pageForward"
         >
-          Continue
+          Weiter
         </button>
       </div>
     </div>
@@ -39,55 +39,55 @@ export default {
           title: "Willkommen zum ersten Experiment!",
           text: `
             <p>
-              The first experiment is a task that we are administering to a group of children. We also need adults to complete the task as a control group. Because the task is the same for both children and adults, it is normal if you find it very easy.
+              Das erste Experiment besteht aus einer Aufgabe, die wir mit einer Gruppe von Kindern durchführen. Wir brauchen auch Erwachsene, die als Kontrollgruppe an dem Experiment teilnehmen. Da die Aufgabe die gleiche für Kinder und Erwachsene ist, ist es ganz normal, wenn du sie sehr einfach findest.
             </p>
 
             <p>
-              In this experiment, you will play a communication game with another participant.
+              In diesem Experiment wirst du ein Kommunikationsspiel mit einem anderen Teilnehmenden spielen.
             </p>
 
             <p>
-              Your goal is to describe objects so that the other participant can correctly identify them.
+              Deine Aufgabe ist es, Objekte so zu beschreiben, dass ein anderer Teilnehmender sie korrekt identifizieren kann.
             </p>
 
             <p>
-              Click <strong>Continue</strong> to learn how the game works.
+              Klicke <strong>Weiter</strong> um zu erfahren, wie das Spiel funktioniert.
             </p>
 
           `
         },
 
         {
-          title: "The Game",
+          title: "Das Spiel",
           text: `
 
             <p>
-              On the <strong>left side</strong> of the screen, you will see a <strong>grey scene with three coloured stickers</strong> placed on it. The other participant sees the same grey scene, but <strong>does not see the stickers</strong>.
+              Auf der <strong>linken Seite</strong> deines Bildschirms wirst du einen <strong>grauen Bildausschnitt mit drei bunten Aufklebern darauf</strong> sehen. Der andere Teilnehemende sieht den gleichen grauen Bildausschnitt, aber <strong>nicht die bunten Aufkleber</strong>.
             </p>
           
             <p>
-              On each trial, <strong>one sticker will be indicated by a red arrow</strong>. This is the sticker you need to describe.
+              In jeder Runde <strong>zeigt ein roter Pfeil auf einen der Aufkleber</strong>. Das ist der Aufkleber, den du beschreiben musst.
             </p>
 
             <p>
-              On the <strong>right side</strong> of the screen, you will see a <strong>grid containing four objects</strong>. The other participant sees the same grid. One of these objects corresponds to the sticker currently indicated by the red arrow.
+              Auf der <strong>rechten Seite</strong> deines Bildschirms wirst du ein <strong>Gitter mit vier Objekten</strong> sehen. Der andere Teilnehmende sieht das gleiche Gitter. Eines dieser vier Objekte entspricht dem Aufkleber, auf den der rote Pfeil zeigt.
             </p>
 
             <p>
-              Your task is to <strong>describe the indicated sticker</strong> so that the other participant can identify the correct object in the grid and add it to the grey scene.
+              Deine Aufgabe ist es, <strong>den markierten Aufkleber zu beschreiben</strong>, so dass der andere Teilnehmende das richtige Objekt innerhalb des Gitters auswählen und zu dem grauen Bildausschnitt hinzufügen kann.
             </p>
 
             <p>
-              You <strong>do not need to describe where the sticker belongs in the scene</strong>. Simply provide a description that identifies the correct object among the four objects in the grid.
+              Du <strong>musst nicht beschreiben, wo im Bildausschnitt sich der Aufkleber befindet</strong>. Gib einfach eine Beschreibung an, die das richtige Objekt aus den vier Objekten im Gitter deutlich macht.
             </p>
 
             <p>
-              You will complete <strong>8 scenes</strong> in total. Below you can see an example of a grey scene with three stickers (on the left) and the corresponding grid of objects (on the right).
+              Insgesamt wirst du <strong>8 Bildausschnitte</strong> sehen. Unten siehst du ein Beispiel eines grauen Bildausschnitts mit drei Aufklebern (links) und dem dazugehörigen Gitter mit Objekten (rechts).
             </p>
 
             <div class="instruction-images">
               <div class="instruction-image">
-                <p><strong>The scene</strong></p>
+                <p><strong>Der Bildausschnitt</strong></p>
                 <img
                   src="redundancy/instructions/example.png"
                   alt="Grey scene with three coloured stickers and a red arrow pointing to one of them."
@@ -95,7 +95,7 @@ export default {
               </div>
 
               <div class="instruction-image">
-                <p><strong>The grid</strong></p>
+                <p><strong>Das Gitter</strong></p>
                 <img
                   src="redundancy/instructions/example_grid.png"
                   alt="Grid containing the sticker indicated by the red arrow and three other objects."
@@ -104,7 +104,7 @@ export default {
             </div>
 
             <p>
-              Click <strong>Continue</strong> to start the game.
+              Klicke <strong>Weiter</strong>, um das Spiel zu starten.
             </p>
               
 

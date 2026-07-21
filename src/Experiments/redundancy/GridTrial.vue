@@ -4,18 +4,18 @@
       <!-- Scene number refers to presentation order -->
       <header class="trial-header">
         <h1 class="scene-title">
-          Scene {{ sceneNumber }}
+          Bildausschnitt {{ sceneNumber }}
         </h1>
 
         <p class="trial-progress">
-          Object {{ currentTrialIndex + 1 }} of {{ trials.length }}
+          Objekt {{ currentTrialIndex + 1 }} von {{ trials.length }}
         </p>
       </header>
 
       <div class="stimulus-row">
         <!-- Larger scene on the left -->
         <section class="stimulus-panel scene-panel">
-          <p class="panel-label">Scene</p>
+          <p class="panel-label">Bildausschnitt</p>
 
           <div class="image-wrapper scene-image-wrapper">
             <img
@@ -29,7 +29,7 @@
 
         <!-- Smaller grid on the right -->
         <section class="stimulus-panel grid-panel">
-          <p class="panel-label">Object grid</p>
+          <p class="panel-label">Gitter mit Objekten</p>
 
           <div class="image-wrapper grid-image-wrapper">
             <img
@@ -48,8 +48,7 @@
           for="object-description"
           class="response-label"
         >
-          Describe the object indicated by the red arrow so that the other
-          participant can identify it in the grid.
+          Beschreibe das Objekt, auf das der rote Pfeil zeigt, so dass der andere Teilnehmende es im Gitter finden kann.
         </label>
 
         <textarea
@@ -58,7 +57,7 @@
           v-model="description"
           class="response-box"
           rows="1"
-          placeholder="Write your description here..."
+          placeholder="Deine Beschreibung"
           @input="clearError"
           @keydown.ctrl.enter.prevent="submitDescription"
           @keydown.meta.enter.prevent="submitDescription"
@@ -68,7 +67,7 @@
           v-if="showError"
           class="error-message"
         >
-          Please write a description before continuing.
+          Bitte gib eine Beschreibung an.
         </p>
 
         <button
@@ -77,13 +76,13 @@
           :disabled="isSubmitting"
           @click="submitDescription"
         >
-          Continue
+          Weiter
         </button>
       </div>
     </div>
 
     <div v-else class="preload-placeholder">
-      <p>Loading...</p>
+      <p>Laden...</p>
     </div>
   </Screen>
 </template>
