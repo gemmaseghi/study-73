@@ -277,12 +277,25 @@ function shuffle(array) {
   return copy;
 }
 
+console.log("sceneGroups:", sceneGroups);
+console.log("sceneGroups length:", sceneGroups.length);
+
 const randomizedSceneGroups = shuffle(sceneGroups).map(
   (group, index) => ({
     ...group,
     presentation_order: index + 1,
     trials: shuffle(group.trials)
   })
+);
+
+console.log(
+  "randomizedSceneGroups:",
+  randomizedSceneGroups
+);
+
+console.log(
+  "randomizedSceneGroups length:",
+  randomizedSceneGroups.length
 );
 
 export default randomizedSceneGroups;
