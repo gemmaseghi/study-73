@@ -7,14 +7,14 @@
 
       <div class="button-container">
         <button v-if="page > 0" @click="previousPage">
-          Back
+          Zurück
         </button>
 
         <button
           v-if="page < pages.length - 1"
           @click="pageForward"
         >
-          Next
+          Weiter
         </button>
 
         <button
@@ -39,15 +39,15 @@ export default {
           title: "Willkommen zum zweiten Experiment!",
           text: `
             <p>
-              Du erhälst zwei Kartendecks, die jeweils 64 Karten enthalten. Die Karten werden Dir nacheinander zugeteilt. 
+              Du wirst ein Kartendeck mit 64 Karten sehen. Die Karten werden dir nacheinander zugeteilt. 
             </p>
 
             <p>
-              Du musst jede Karte in eine der vier unten gezeigten Kartenkategorien einordnen, indem Du die entsprechende Kartenkategorie mit Deiner Maus anklickst.
+              Du musst jede Karte in eine der vier unten gezeigten Kartenkategorien einordnen, indem du die entsprechende Kartenkategorie mit deiner Maus anklickst.
             </p>
 
             <p>
-              Wenn Du die Karte richtig eingeordnet hast, erscheint das Wort "richtig" auf dem Bildschirm. Wenn Du aber einen Fehler gemacht hast, erscheint das Wort "falsch".
+              Wenn du die Karte richtig eingeordnet hast, erscheint das Wort "richtig" auf dem Bildschirm. Wenn du aber einen Fehler gemacht hast, erscheint das Wort "falsch".
             </p>
 
             <p>
@@ -55,7 +55,7 @@ export default {
             </p>
             
             <p>
-            Unten siehst Du ein Beispiel mit der zu sortierenden Karte oben und den vier Kartenkategorien darunter.
+            Unten siehst du ein Beispiel mit der zu sortierenden Karte oben und den vier Kartenkategorien darunter.
             </p>
 
             <div class="instruction-image">
