@@ -15,9 +15,18 @@
     />
 
     <EndFirstExperiment />
+    <!-- ====================================== -->
+    <!-- Experiment 2: WCST                     -->
+    <!-- ====================================== -->
+
+    <WcstInstructions />
+
+    <WcstGridTrial />
+
+    <EndSecondExperiment />
 
     <!-- ====================================== -->
-    <!-- Experiment 2: Director task            -->
+    <!-- Experiment 3: Director task            -->
     <!-- ====================================== -->
 
     <InstructionsSpeaker />
@@ -56,7 +65,14 @@ import RedundancyGridTrial from "./Experiments/redundancy/GridTrial.vue";
 import EndFirstExperiment from "./Experiments/redundancy/EndFirstExperiment.vue";
 
 /*
- * Experiment 2: Director task
+ * Experiment 2: WCST
+ */
+import WcstInstructions from "./Experiments/wcst/Instructions.vue";
+import WcstGridTrial from "./Experiments/wcst/GridTrial.vue";
+import EndSecondExperiment from "./Experiments/wcst/EndSecondExperiment.vue";
+
+/*
+ * Experiment 3: Director task
  */
 import { trialBlocks } from "./Experiments/main/trials";
 import practiceTrials from "./Experiments/main/practiceTrials";
@@ -83,6 +99,14 @@ export default {
     RedundancyInstructions,
     RedundancyGridTrial,
     EndFirstExperiment,
+
+    /*
+     * wcst task
+     */
+
+    WcstInstructions,
+    WcstGridTrial,
+    EndSecondExperiment,
 
     /*
      * Director task
