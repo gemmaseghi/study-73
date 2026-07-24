@@ -61,7 +61,7 @@ export default {
             </p>
 
             <img
-              src="instructions/instructions_02.png"
+              src="main/instructions/instructions_02.png"
               alt="Example view first and second part"
               class="example-image"
             />

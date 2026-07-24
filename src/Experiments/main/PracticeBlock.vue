@@ -108,7 +108,7 @@ export default {
       practiceAttempt: 0,
       advanceDelay: 250,
       imagesReady: false,
-      emptyGridImage: "stimuli/empty_grid.png"
+      emptyGridImage: "main/stimuli/empty_grid.png"
     };
   },
   mounted() {

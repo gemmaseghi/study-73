@@ -51,6 +51,22 @@
 
     <Questionnaire />
 
+    <!-- ====================================== -->
+    <!-- Experiment 5: Stroop Task         -->
+    <!-- ====================================== -->
+
+    <StroopInstructions />
+    <StroopGridTrial />
+    
+
+    <!-- ====================================== -->
+    <!-- Experiment 5: Short Story Task         -->
+    <!-- ====================================== -->
+
+    <FullTask />
+
+    <EndLastExperiment />
+
     <SubmitResultsScreen />
   </Experiment>
 </template>
@@ -89,6 +105,20 @@ import PracticeBlock from "./Experiments/main/PracticeBlock.vue";
 import DirectorGridTrial from "./Experiments/main/GridTrial.vue";
 import Questionnaire from "./Experiments/main/Questionnaire.vue";
 
+/*
+ * Experiment 5: Stroop task
+ */
+
+ import StroopInstructions from "./Experiments/stroop/Instructions.vue";
+ import StroopGridTrial from "./Experiments/stroop/GridTrial.vue";
+
+
+/*
+ * Experiment 5: Short Story task
+ */
+import EndLastExperiment from "./Experiments/sst/EndFLastExperiment.vue";
+import FullTask from "./Experiments/sst/fullTask.vue";
+
 export default {
   name: "App",
 
@@ -119,7 +149,21 @@ export default {
     PracticeBlock,
     InstructionsTwoParts,
     DirectorGridTrial,
-    Questionnaire
+    Questionnaire,
+
+    /*
+     * Stroop task
+     */
+
+    StroopInstructions,
+    StroopGridTrial,
+
+    /*
+     * Short Story task
+     */
+
+    FullTask,
+    EndLastExperiment
   },
 
   data() {

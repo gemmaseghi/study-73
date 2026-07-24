@@ -94,7 +94,7 @@ export default {
       blindSpotAttempts: [],
       blindSpotError: false,
       imagesReady: false,
-      emptyGridImage: "stimuli/empty_grid.png"
+      emptyGridImage: "main/stimuli/empty_grid.png"
     };
   },
   computed: {

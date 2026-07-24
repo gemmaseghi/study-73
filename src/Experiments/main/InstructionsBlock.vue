@@ -56,7 +56,7 @@ export default {
 
             <div class="instruction-figure">
               <img
-                src="instructions/example_view.png"
+                src="main/instructions/example_view.png"
                 alt="Example of speaker and listener views"
                 class="example-image"
               />
@@ -99,7 +99,7 @@ export default {
 
             <div class="instruction-figure">
               <img
-                src="instructions/example_view_block.png"
+                src="main/instructions/example_view_block.png"
                 alt="Example of completed block view"
                 class="example-image-large"
               />

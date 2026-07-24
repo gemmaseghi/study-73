@@ -62,17 +62,17 @@ export default {
         {
           id: "speaker_practice_size",
           condition: "size",
-          image: "instructions/speaker_practice_size.png"
+          image: "main/instructions/speaker_practice_size.png"
         },
         {
           id: "speaker_practice_filler",
           condition: "filler",
-          image: "instructions/speaker_practice_filler.png"
+          image: "main/instructions/speaker_practice_filler.png"
         },
         {
           id: "speaker_practice_color",
           condition: "color",
-          image: "instructions/speaker_practice_color.png"
+          image: "main/instructions/speaker_practice_color.png"
         }
       ]
     };

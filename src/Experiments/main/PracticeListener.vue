@@ -72,19 +72,19 @@ export default {
           id: "listener_practice_size",
           condition: "size",
           utterance: "Die kleine Erdbeere",
-          image: "instructions/listener_practice_size.png"
+          image: "main/instructions/listener_practice_size.png"
         },
         {
           id: "listener_practice_filler",
           condition: "filler",
           utterance: "Das Fahrrad",
-          image: "instructions/listener_practice_filler.png"
+          image: "main/instructions/listener_practice_filler.png"
         },
         {
           id: "listener_practice_color",
           condition: "color",
-          utterance: "Der rote Schal",
-          image: "instructions/listener_practice_color.png"
+          utterance: "Der blaue Strohhalm",
+          image: "main/instructions/listener_practice_color.png"
         }
       ]
     };

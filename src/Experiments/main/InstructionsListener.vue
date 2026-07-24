@@ -57,7 +57,7 @@ export default {
               </p>
 
               <img
-                src="instructions/instructions_listener.png"
+                src="main/instructions/instructions_listener.png"
                 alt="Example listener view"
                 class="example-image"
               />
