@@ -7,21 +7,21 @@
 
       <div class="button-container">
         <button v-if="page > 0" @click="previousPage">
-          Back
+          Zurück
         </button>
 
         <button
           v-if="page < pages.length - 1"
           @click="pageForward"
         >
-          Next
+          Weiter
         </button>
 
         <button
           v-else
           @click="pageForward"
         >
-          Continue
+          Weiter
         </button>
       </div>
     </div>
@@ -36,14 +36,15 @@ export default {
       page: 0,
       pages: [
         {
-          title: "End of the second Experiment",
+          title: "Ende des zweiten Experiments",
           text: `
             <p>
-              Congratulations, you have completed the second experiment! Thank you for your participation. 
+              Glückwunsch, du hast das zweite Experiment abgeschlossen! Danke für deine Teilnahme. 
             </p>
+            
 
             <p>
-              Click <strong>Continue</strong> to proceed to the next experiment.
+              Klicke <strong>Weiter</strong>, um mit dem nächsten Experiment fortzufahren.
             </p>
 
           `
