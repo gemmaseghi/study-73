@@ -7,21 +7,21 @@
 
       <div class="button-container">
         <button v-if="page > 0" @click="previousPage">
-          Back
+          Zurück
         </button>
 
         <button
           v-if="page < pages.length - 1"
           @click="pageForward"
         >
-          Next
+          Weiter
         </button>
 
         <button
           v-else
           @click="pageForward"
         >
-          Continue
+          Weiter
         </button>
       </div>
     </div>
@@ -45,7 +45,7 @@ export default {
             </p>
 
             <p>
-              <strong>Aus Leos Perspektive ist eines der Objekte in jedem Gitter durch ein Hindernis verdeckt</strong>. Daher <strong>sieht Leo in jedem Gitter nur drei Objekte</strong> und das vierte Feld ist grau markiert. 
+              <strong>Aus Leos Perspektive ist eines der Objekte in jedem Gitter durch ein Hindernis verdeckt</strong>. Deswegen <strong>sieht Leo in jedem Gitter nur drei Objekte</strong> und das vierte Feld ist grau markiert. 
               
               Dieses graue Feld stellt somit das Feld dar, das Leo nicht sieht.
             </p>

@@ -36,14 +36,14 @@ export default {
       page: 0,
       pages: [
         {
-          title: "End of the last experiment",
+          title: "Ende des letzten Experiments",
           text: `
             <p>
-              Congratulations, you have now completed all the experiments! 
+              Herzlichen Glückwunsch, du hast nun alle Experimente abgeschlossen! 
             </p>
 
             <p>
-              Click on "Finish" to sumbit your results and be redirected to Sona. 
+              Klicke auf "Weiter", um deine Ergebnisse einzureichen und zu Sona weitergeleitet zu werden. 
             </p>
 
           `

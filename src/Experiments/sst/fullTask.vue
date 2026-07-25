@@ -7,14 +7,14 @@
       <!-- ================================================== -->
 
       <div v-if="section === 'intro'" class="instructions">
-        <h2>Welcome to the last experiment!</h2>
+        <h2>Willkommen zum letzten Experiment!</h2>
 
         <p>
-          You are going to read a short story called <em>The End of Something</em>. The story is only a few pages, but take your time reading it. Try to get a sense of what happens and what the relationships are between the characters.
+          Du wirst eine Kurzgeschichte namens <em>Das Ende von Etwas</em> lesen. Die Geschichte ist relativ kurz, aber nimm dir Zeit sie genau zu lesen. Versuche, einen Eindruck davon zu bekommen, was passiert und wie die Beziehungen zwischen den Charakteren aussehen.
         </p>
 
         <p>
-          After you're finished, you will have to answer some questions about it. As you are answering the questions, you will be able to look again at the story by clicking on the "Back to the story" button.
+          Im Anschluss wirst du ein paar Fragen über die Geschichte beantworten. Während du die Fragen beantwortest, kannst du dir die Geschichte über den "Zurück zur Geschichte"-Knopf nochmal anschauen.
         </p>
 
         <div class="button-container">
@@ -140,7 +140,7 @@
         <!-- Knowledge step 1 -->
         <div v-if="knowledgeStep === 1" class="question">
           <p>
-            Have you read this story before?
+            Hast du die Geschichte schonmal gelesen?
           </p>
 
           <div class="radio-container">
@@ -186,14 +186,14 @@
         <div v-if="knowledgeStep === 2" class="question">
 
           <div v-if="read === 'yes'">
-            <p>How long ago did you read it?</p>
+            <p>Wie lange ist es her, dass du sie gelesen hast?</p>
             <textarea 
               class="knowledge-textarea"
               v-model="whenRead">
             </textarea>
 
             <p class="followup-question">
-              How well do you remember the story?
+              Wie gut erinnerst du dich an die Geschichte?
             </p>
             <textarea 
               class="knowledge-textarea"
@@ -201,7 +201,7 @@
             </textarea>
 
             <p class="followup-question">
-              Did you read it for school or for pleasure?
+              Hast du die Geschichte für die Schule oder zum Vergnügen gelesen?
             </p>
 
             <div class="radio-container">
@@ -211,7 +211,7 @@
                   value="school"
                   v-model="reason"
                 />
-                School
+                Schule
               </label>
 
               <label>
@@ -220,19 +220,19 @@
                   value="pleasure"
                   v-model="reason"
                 />
-                Pleasure
+                Vergnügen
               </label>
             </div>
 
             <div v-if="reason === 'school'">
-              <p>What grade were you in?</p>
+              <p>In welcher Klasse warst du?</p>
               <textarea
                 class="knowledge-textarea"
                 v-model="grade"
               ></textarea>
 
               <p class="followup-question">
-                What class was it for?
+                Für welches Fach war es?
               </p>
               <textarea
                 class="knowledge-textarea"
@@ -260,7 +260,7 @@
         <!-- Knowledge step 3 -->
         <div v-if="knowledgeStep === 3" class="question">
           <p>
-            Is the story familiar to you?
+            Kommt dir die Geschichte bekannt vor?
           </p>
 
           <div class="radio-container">
@@ -270,7 +270,7 @@
                 value="yes"
                 v-model="familiar"
               />
-              Yes
+              Ja
             </label>
 
             <label>
@@ -279,7 +279,7 @@
                 value="no"
                 v-model="familiar"
               />
-              No
+              Nein
             </label>
           </div>
 
@@ -307,7 +307,7 @@
 
           <div v-if="familiar === 'yes'">
             <p>
-              Do you know anything about the story? What do you know?
+              Weißt du etwas über diese Geschichte? Was weißt du?
             </p>
 
             <textarea
@@ -316,7 +316,7 @@
             ></textarea>
 
             <p class="followup-question">
-              Have you discussed the story with anyone?
+              Hast du über die Geschichte mit jemandem gesprochen?
             </p>
 
             <textarea
@@ -353,15 +353,15 @@
         <h2>Fragen zur Geschichte</h2>
 
         <p>
-          You will now be asked some questions about the story. For most of the questions, there are no right or wrong answers and the questions can be answered with short responses. 
+          Dir werden nun einige Fragen zur Geschichte gestellt. Für die meisten Fragen, gibt es keine richtige oder falsche Antwort und eine kurze Antwort ist ausreichend.
         </p>
 
         <p>
-          We're also interested in what you believe to be the character's thoughts, feelings, and intentions when it applies to the question.
+          Uns interessiert auch, was deiner Meinung nach die Gedanken, Gefühle und Absichten der Charaktere sind, wenn dies für die Frage relevant ist.
         </p>
 
         <p>
-          You will be able to go back to the story by clicking on the "Back to the story" button. Now click on "Next" to start answering the questions.
+          Du kannst jederzeit zur Geschichte zurückkehren, indem du auf den "Zurück zur Geschichte"-Knopf klickst. Klicke nun auf "Weiter", um mit der Beantwortung der Fragen zu beginnen.
         </p>
 
         <div class="button-container">
@@ -427,7 +427,7 @@
               :disabled="!currentComprehensionAnswer"
               @click="submitTask"
             >
-              Abschließen
+              Fertig
             </button>
           </div>
         </div>

@@ -47,7 +47,7 @@ export default {
             </p>
 
             <p>
-              Wenn du die Karte richtig eingeordnet hast, erscheint das Wort "richtig" auf dem Bildschirm. Wenn du aber einen Fehler gemacht hast, erscheint das Wort "falsch".
+              Wenn du die Karte richtig eingeordnet hast, erscheint das Wort "Richtig" auf dem Bildschirm. Wenn du aber einen Fehler gemacht hast, erscheint das Wort "Falsch".
             </p>
 
             <p>

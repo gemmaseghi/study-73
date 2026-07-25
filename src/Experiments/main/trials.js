@@ -146,8 +146,8 @@ const trials = [
     block_id:3,
     trial_in_block:1,
     condition: "filler2size",
-    utterance: "Die großse Flagge",
-    item: "Die großse blaue Flagge",
+    utterance: "Die große Flagge",
+    item: "Die große blaue Flagge",
     image: "main/stimuli/trial_11.png",
     blindSpot: "topLeft",
     correctAnswer: "topRight"

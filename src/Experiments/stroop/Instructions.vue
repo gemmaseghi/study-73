@@ -7,14 +7,14 @@
 
       <div class="button-container">
         <button v-if="page > 0" @click="previousPage">
-          Back
+          Zurück
         </button>
 
         <button
           v-if="page < pages.length - 1"
           @click="pageForward"
         >
-          Next
+          Weiter
         </button>
 
         <button
@@ -36,14 +36,14 @@ export default {
       page: 0,
       pages: [
         {
-          title: "Welcome to the fourth experiment!",
+          title: "Willkommen zum vierten Experiment!",
           text: `
             <p>
-              In this task you will see color names (red, green, lila and orange) in different "print" colors. You need to respond to the print color.
+              In diesem Experiment wirst du Farbwörter (rot, grün, lila und orange) sehen, die in verschiedenen Farben geschrieben sind. Du musst auf die Schriftfarbe achten, nicht auf die Bedeutung der Wörter.
             </p>
 
             <p>
-              For example, if you see: 
+              Zum Beispiel wenn du folgendes siehst, 
             </p>
 
             <div class="instruction-image">
@@ -55,18 +55,18 @@ export default {
             </div>
 
             <p>
-              You need to respond to the print color (green), and press the associated button ("g"). The other buttons used in this study are "r", "l", and "o", for red, lila and orange.
+              musst du auf die Schriftfarbe achten (grün) und die entsprechende Taste drücken ("G"). Die anderen Tasten, die in diesem Experiment verwendet werden, sind "R", "L", und "O", für rot, lila und orange.
             </p>
 
             <p>
-              Click "Next" to go to the second part of the instructions.
+              Klicke "Weiter", um zum zweiten Teil der Anleitung zu gelangen.
             </p>
 
           `
         },
 
         {
-          title: "Instructions",
+          title: "Anleitung",
           text: `
 
             <div class="instruction-image">
@@ -78,11 +78,11 @@ export default {
             </div>
 
             <p>
-              It can be difficult, because the name and the ink color are conflicting (except for orange in the example above). So concentrate and ignore the meaning of the color words, instead, look at the ink color.
+              Das kann ganz schön schwierig sein, wenn die Schriftfarbe nicht dem Wort entspricht (wie in allen Fällen außer bei orange im Beispiel oben). Also konzentriere dich auf die Schriftfarbe und ignorier die Bedeutung der Farbwörter.
             </p>
 
             <p>
-              Click "Start" to begin the experiment. 
+              Klicke "Start", um mit dem Experiment zu beginnen.
             </p>
 
           `

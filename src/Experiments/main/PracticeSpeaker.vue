@@ -36,7 +36,7 @@
         class="next-button"
         @click="nextTrial"
       >
-        {{ currentTrialIndex < practiceTrials.length - 1 ? "Next" : "Continue" }}
+        {{ currentTrialIndex < practiceTrials.length - 1 ? "Weiter" : "Weiter" }}
       </button>
     </div>
 
