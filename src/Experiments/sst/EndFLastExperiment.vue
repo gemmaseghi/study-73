@@ -69,7 +69,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .instructions {
   width: 700px;
   max-width: 95vw;

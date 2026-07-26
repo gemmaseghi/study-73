@@ -88,7 +88,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .instructions {
   width: 700px;
   max-width: 95vw;
@@ -120,18 +120,18 @@ export default {
 }
 
 
-.instruction-image {
+.instructions :deep(.instruction-image) {
+  display: flex;
+  justify-content: center;
   width: 100%;
   margin: 24px auto;
-  text-align: center;
 }
 
-.instruction-image img {
+.instructions :deep(.instruction-image img) {
   display: block;
-  width: 650px !important;
-  max-width: 100% !important;
-  height: auto !important;
-  margin: 0 auto;
+  width: 650px;
+  max-width: 100%;
+  height: auto;
 }
 
 </style>

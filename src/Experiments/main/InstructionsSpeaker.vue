@@ -132,7 +132,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .instructions {
   width: 700px;
   max-width: 95vw;
@@ -151,13 +151,6 @@ export default {
 }
 
 
-.example-image {
-  display: block;
-  margin: 24px auto;
-  max-width: 600px;
-  width: 100%;
-}
-
 .button-container {
   display: flex;
   justify-content: center;
@@ -170,10 +163,6 @@ export default {
   margin: 0 5px;
 }
 
-.instruction-figure {
-  text-align: center;
-  margin: 8px 0;
-}
 
 .image-caption {
   font-weight: bold;
@@ -181,20 +170,20 @@ export default {
   margin-bottom: 10px;
 }
 
-.instruction-image {
-  display: block;
-  margin: 0 auto;
-  max-width: 300px;
-  width: auto;
-  height: auto;
+
+.instructions :deep(.instruction-figure) {
+  text-align: center;
+  margin: 8px 0;
 }
 
-.example-image {
+.instructions :deep(.example-image) {
   display: block;
-  margin: 24px auto;
-  max-width: 650px;
   width: auto;
+  max-width: 100%;
+  max-height: 500px;
   height: auto;
+  margin: 24px auto;
+  object-fit: contain;
 }
 
 

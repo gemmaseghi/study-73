@@ -4,6 +4,7 @@
     <!-- Experiment 1: Redundancy production   -->
     <!-- ====================================== -->
 
+    <GeneralInstructions />
     <RedundancyInstructions />
 
     <RedundancyGridTrial
@@ -51,6 +52,8 @@
 
     <Questionnaire />
 
+    <EndThirdExperiment />
+
     <!-- ====================================== -->
     <!-- Experiment 5: Stroop Task         -->
     <!-- ====================================== -->
@@ -58,7 +61,7 @@
     <StroopInstructions />
     <StroopGridTrial />
     
-
+    <EndFourthExperiment />
     <!-- ====================================== -->
     <!-- Experiment 5: Short Story Task         -->
     <!-- ====================================== -->
@@ -79,6 +82,7 @@ import randomizedSceneGroups from "./Experiments/redundancy/trials";
 import RedundancyInstructions from "./Experiments/redundancy/Instructions.vue";
 import RedundancyGridTrial from "./Experiments/redundancy/GridTrial.vue";
 import EndFirstExperiment from "./Experiments/redundancy/EndFirstExperiment.vue";
+import GeneralInstructions from "./Experiments/redundancy/GeneralInstructions.vue";
 
 /*
  * Experiment 2: WCST
@@ -105,12 +109,15 @@ import PracticeBlock from "./Experiments/main/PracticeBlock.vue";
 import DirectorGridTrial from "./Experiments/main/GridTrial.vue";
 import Questionnaire from "./Experiments/main/Questionnaire.vue";
 
+import EndThirdExperiment from "./Experiments/main/EndThirdExperiment.vue";
+
 /*
  * Experiment 5: Stroop task
  */
 
  import StroopInstructions from "./Experiments/stroop/Instructions.vue";
  import StroopGridTrial from "./Experiments/stroop/GridTrial.vue";
+ import EndFourthExperiment from "./Experiments/stroop/EndFourthExperiment.vue";
 
 
 /*
@@ -126,18 +133,20 @@ export default {
     /*
      * Redundancy experiment
      */
+    
+    GeneralInstructions,
     RedundancyInstructions,
     RedundancyGridTrial,
     EndFirstExperiment,
-
+    
     /*
      * wcst task
      */
-
+    
     WcstInstructions,
     WcstGridTrial,
     EndSecondExperiment,
-
+    
     /*
      * Director task
      */
@@ -150,6 +159,7 @@ export default {
     InstructionsTwoParts,
     DirectorGridTrial,
     Questionnaire,
+    EndThirdExperiment,
 
     /*
      * Stroop task
@@ -157,6 +167,7 @@ export default {
 
     StroopInstructions,
     StroopGridTrial,
+    EndFourthExperiment,
 
     /*
      * Short Story task

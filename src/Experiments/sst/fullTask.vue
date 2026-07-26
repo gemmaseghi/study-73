@@ -174,7 +174,11 @@
 
             <button
               :disabled="!read"
-              @click="knowledgeStep = 2"
+              @click="
+                read === 'yes'
+                  ? knowledgeStep = 2
+                  : knowledgeStep = 3
+              "
             >
               Weiter
             </button>
@@ -250,7 +254,18 @@
               Zurück zur Geschichte
             </button>
 
-            <button @click="knowledgeStep = 3">
+            <button
+              :disabled="
+                read === 'yes' &&
+                (
+                  !whenRead.trim() ||
+                  !memory.trim() ||
+                  !reason ||
+                  (reason === 'school' && (!grade.trim() || !className.trim()))
+                )
+              "
+              @click="knowledgeStep = 3"
+            >
               Weiter
             </button>
           </div>
@@ -294,7 +309,11 @@
 
             <button
               :disabled="!familiar"
-              @click="knowledgeStep = 4"
+              @click="
+                familiar === 'yes'
+                  ? knowledgeStep = 4
+                  : finishKnowledgeQuestionnaire()
+              "
             >
               Weiter
             </button>
@@ -334,7 +353,13 @@
               Zurück zur Geschichte
             </button>
 
-            <button @click="finishKnowledgeQuestionnaire">
+            <button
+              :disabled="
+                !familiarExplanation.trim() ||
+                !discussed.trim()
+              "
+              @click="finishKnowledgeQuestionnaire"
+            >
               Weiter
             </button>
           </div>
@@ -353,7 +378,7 @@
         <h2>Fragen zur Geschichte</h2>
 
         <p>
-          Dir werden nun einige Fragen zur Geschichte gestellt. Für die meisten Fragen, gibt es keine richtige oder falsche Antwort und eine kurze Antwort ist ausreichend.
+          Dir werden nun einige Fragen zur Geschichte gestellt. Für die meisten Fragen, gibt es keine richtige oder falsche Antwort.
         </p>
 
         <p>
@@ -574,7 +599,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .story-text {
   max-width: 700px;
   margin: 0 auto;
@@ -605,7 +630,7 @@ export default {
   width: 100%;
   max-width: 700px;
 
-  min-height: 150px;
+  min-height: 220px;
 
   padding: 14px;
 
@@ -614,6 +639,47 @@ export default {
 
   resize: vertical;
   box-sizing: border-box;
+}
+
+.instructions {
+  width: 700px;
+  max-width: 95vw;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.instructions h2 {
+  text-align: center;
+  margin: 0 0 18px;
+}
+
+.instructions p {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.instructions .button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.button-container button {
+  display: inline-block;
+  width: auto;
+  margin: 0;
 }
 
 </style>

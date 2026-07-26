@@ -43,7 +43,7 @@ export default {
             </p>
 
             <p>
-              Klicke <strong>Weiter</strong>, um mit dem nächsten Experiment fortzufahren.
+              Du kannst jetzt gerne eine kurze Pause machen, wenn du möchtest. Sobald du bereit bist, klicke <strong>Weiter</strong>, um mit dem nächsten Experiment fortzufahren. Bitte mache während der Experimente keine Pausen.
             </p>
 
           `
@@ -69,7 +69,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .instructions {
   width: 700px;
   max-width: 95vw;

@@ -82,6 +82,10 @@ export default {
             </p>
 
             <p>
+              Versuche, so schnell wie möglich zu antworten.
+            </p>
+            
+            <p>
               Klicke "Start", um mit dem Experiment zu beginnen.
             </p>
 
@@ -108,7 +112,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .instructions {
   width: 700px;
   max-width: 95vw;
@@ -140,21 +144,23 @@ export default {
 }
 
 
-.instruction-image {
-  width: 100%;
-  margin: 24px auto;
+.instructions :deep(.instruction-image) {
+  width: 100vw;
+  margin: 24px 0 24px calc(50% - 50vw);
   text-align: center;
 }
 
-.example-image {
-  width: 220px;
+.instructions :deep(.example-image) {
+  width: 200px;
   height: auto;
 }
 
-.mapping-image {
-  width: 650px;
-  max-width: 100%;
+.instructions :deep(.mapping-image) {
+  display: block;
+  width: min(700px, 95vw);
+  max-width: none;
   height: auto;
+  margin: 0 auto;
 }
 
 </style>

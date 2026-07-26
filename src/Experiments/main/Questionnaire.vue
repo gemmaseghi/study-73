@@ -166,6 +166,7 @@ label {
 
 textarea {
   width: 100%;
+  max-width: 800px;
   min-height: 120px;
 }
 
