@@ -13,8 +13,6 @@ Vue.prototype.$surveyCode =
   urlParams.get('survey_code') ||
   urlParams.get('SURVEY_CODE');
 
-console.log('Sona survey code:', Vue.prototype.$surveyCode);
-
 // Load Konva components
 Vue.use(VueKonva, { prefix: 'Canvas' });
 
