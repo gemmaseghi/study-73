@@ -43,11 +43,11 @@ export default {
             </p>
 
             <p>
-              Klicke auf „Weiter“, um deine Ergebnisse einzureichen. Zunächst werden deine Daten an den Server übertragen. Sobald die Übertragung erfolgreich abgeschlossen ist, zeigt dein Browser eine Meldung an, die dich fragt, ob du die Seite verlassen möchtest. 
+              Klicke auf „Weiter“, um deine Ergebnisse einzureichen. Zunächst werden deine Daten an den Server übertragen. Sobald die Übertragung erfolgreich abgeschlossen ist, wirst du entweder automatisch zu Sona weitergeleitet oder dein Browser fragt dich, ob du die Seite verlassen möchtest.
             </p>
 
             <p>
-              Zu diesem Zeitpunkt wurden deine Daten bereits gespeichert. Du kannst daher bedenkenlos auf „Seite verlassen“ klicken und wirst anschließend zu Sona weitergeleitet, um deine Versuchspersonenstunden zu erhalten.
+              Zu diesem Zeitpunkt wurden deine Daten bereits gespeichert. Falls eine solche Meldung erscheint, kannst du daher bedenkenlos auf „Seite verlassen“ klicken. Anschließend wirst du zu Sona weitergeleitet, um deine Versuchspersonenstunden zu erhalten.
             </p>
           `
         },
