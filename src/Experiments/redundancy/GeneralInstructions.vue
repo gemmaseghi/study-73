@@ -43,7 +43,7 @@ export default {
             </p>
 
             <div class="contact-info">
-              <strong>Contact</strong><br>
+              <strong>Kontakt</strong><br>
 
               Gemma Seghi<br>
               Seminar für Sprachwissenschaft<br>
@@ -53,7 +53,7 @@ export default {
             </div>
 
             <p>
-              <strong>Informationen zur Studie</strong>.
+              <strong>Informationen zur Studie</strong>
             </p>
 
             <p>

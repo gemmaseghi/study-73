@@ -612,7 +612,7 @@ const trials = [
     item: "Der kleine blaue Fisch",
     image: "main/stimuli/trial_44.png",
     blindSpot: "topRight",
-    correctAnswer: "bottomRight"
+    correctAnswer: "bottomLeft"
   },
 
 {

@@ -36,7 +36,7 @@ export default {
       page: 0,
       pages: [
         {
-          title: "Willkommen!",
+          title: "Willkommen zum dritten Experiment!",
           text: `
             <p>
               In diesem Experiment spielst du ein Koordinationsspiel mit einem virtuellen Spieler namens <strong>Leo</strong>.
@@ -47,7 +47,7 @@ export default {
             </p>
 
             <p>
-              Während des Spiels <strong>wird Leo immer die Sprecherrolle übernehmen</strong> und <strong>du wirst immer die Höhrerrolle übernhemen</strong>.
+              Während des Spiels <strong>wird Leo immer die Sprecherrolle übernehmen</strong> und <strong>du wirst immer die Höhrerrolle übernehmen</strong>.
             </p>
 
             <p>

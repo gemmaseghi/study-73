@@ -82,7 +82,7 @@ export default {
             </p>
 
             <p>
-              Versuche, so schnell wie möglich zu antworten.
+              Versuche, so schnell wie möglich, die richtige Taste zu drücken.
             </p>
             
             <p>
