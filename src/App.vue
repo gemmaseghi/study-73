@@ -126,6 +126,7 @@ import EndThirdExperiment from "./Experiments/main/EndThirdExperiment.vue";
 import EndLastExperiment from "./Experiments/sst/EndFLastExperiment.vue";
 import FullTask from "./Experiments/sst/fullTask.vue";
 
+
 export default {
   name: "App",
 
