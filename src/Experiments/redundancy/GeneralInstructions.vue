@@ -65,7 +65,7 @@ export default {
             </p>
 
             <p>
-              3. Vergütung: Für deine Teilnahme erhälst du 1 Versuchspersonenstunden.           
+              3. Vergütung: Für deine Teilnahme erhälst du 1.0 Versuchspersonenstunden.           
             </p>
 
             <p>

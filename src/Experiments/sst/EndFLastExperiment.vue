@@ -43,9 +43,12 @@ export default {
             </p>
 
             <p>
-              Klicke auf "Weiter", um deine Ergebnisse einzureichen und zu Sona weitergeleitet zu werden. 
+              Klicke auf „Weiter“, um deine Ergebnisse einzureichen. Zunächst werden deine Daten an den Server übertragen. Sobald die Übertragung erfolgreich abgeschlossen ist, zeigt dein Browser eine Meldung an, die dich fragt, ob du die Seite verlassen möchtest. 
             </p>
 
+            <p>
+              Zu diesem Zeitpunkt wurden deine Daten bereits gespeichert. Du kannst daher bedenkenlos auf „Seite verlassen“ klicken und wirst anschließend zu Sona weitergeleitet, um deine Versuchspersonenstunden zu erhalten.
+            </p>
           `
         },
       ]
