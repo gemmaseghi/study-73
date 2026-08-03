@@ -47,8 +47,21 @@ export default {
             </p>
 
             <p>
-              Deine Aufgabe ist es, Objekte so zu beschreiben, dass ein anderer Teilnehmender sie korrekt identifizieren kann.
+              Deine Aufgabe ist es, Objekte so zu beschreiben, dass ein anderer Teilnehmender sie korrekt identifizieren kann. Du kannst den Namen des Objekts verwenden.
             </p>
+
+            <p>Hier ist ein Beispiel:</p>
+
+            <figure>
+              <img
+                src="redundancy/instructions/example_instructions.png"
+                alt="Beispielbild mit einem Dreieck"
+              />
+
+              <figcaption>
+                In diesem Beispiel könntest du „das Dreieck“ sagen.
+              </figcaption>
+            </figure>
 
             <p>
               Klicke <strong>Weiter</strong> um zu erfahren, wie das Spiel funktioniert.
