@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package" 
   },
   "dependencies": {
     "magpie-base": "^3.6.9"
