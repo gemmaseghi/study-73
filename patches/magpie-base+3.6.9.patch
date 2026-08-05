@@ -1,5 +1,5 @@
 diff --git a/node_modules/magpie-base/src/components/Experiment.vue b/node_modules/magpie-base/src/components/Experiment.vue
-index 08686a3..08b266f 100644
+index 08686a3..f5de476 100644
 --- a/node_modules/magpie-base/src/components/Experiment.vue
 +++ b/node_modules/magpie-base/src/components/Experiment.vue
 @@ -214,21 +214,36 @@ export default {
@@ -15,7 +15,7 @@ index 08686a3..08b266f 100644
 -  mounted() {
 -    this.$el.addEventListener('mousemove', (e) =>
 -      this.$magpie.mousetracking.onMouseMove(e)
-+      e.returnValue = '';
++      e.returnValue = ''; 
 +    };
 +
 +    window.addEventListener(
@@ -48,38 +48,63 @@ index 08686a3..08b266f 100644
    },
  
 diff --git a/node_modules/magpie-base/src/components/screens/SubmitResultsScreen.vue b/node_modules/magpie-base/src/components/screens/SubmitResultsScreen.vue
-index 23425df..89e8a6c 100644
+index 23425df..74c03ef 100644
 --- a/node_modules/magpie-base/src/components/screens/SubmitResultsScreen.vue
 +++ b/node_modules/magpie-base/src/components/screens/SubmitResultsScreen.vue
-@@ -7,26 +7,29 @@ You can provide the submission URL to the Experiment component.
-   <Screen v-if="!$magpie.debug" title="Submitting">
+@@ -4,29 +4,47 @@ You can provide the submission URL to the Experiment component.
+ </docs>
+ 
+ <template>
+-  <Screen v-if="!$magpie.debug" title="Submitting">
++  <Screen v-if="!$magpie.debug" title="Datenübertragung">
      <Slide>
-       <p>{{ $t('screens.SubmitResultsScreen.waiting') }}</p>
+-      <p>{{ $t('screens.SubmitResultsScreen.waiting') }}</p>
 -      <Wait :time="0" @done="submit(() => $magpie.nextSlide())" />
++      <p>
++        Deine Daten werden übertragen. Bitte warte einen Moment und schließe
++        diese Seite nicht.
++      </p>
++
 +      <Wait :time="0" @done="submit()" />
      </Slide>
 +
      <Slide>
        <p v-if="!error">
-         {{ $t('screens.SubmitResultsScreen.done') }}
+-        {{ $t('screens.SubmitResultsScreen.done') }}
 -        <Wait :time="3000" @done="redirectToCompletionUrl" />
++        Deine Daten wurden erfolgreich übermittelt. Du wirst nun zu Sona
++        weitergeleitet.
        </p>
+-      <div v-else>
+-        <p>{{ $t('screens.SubmitResultsScreen.error') }}</p>
 +
-       <div v-else>
-         <p>{{ $t('screens.SubmitResultsScreen.error') }}</p>
++      <div v-else class="submission-error">
++        <h2>Fehler bei der Datenübertragung</h2>
 +
          <p>
-           {{ $t('screens.SubmitResultsScreen.contact') }}
+-          {{ $t('screens.SubmitResultsScreen.contact') }}
 -          <a :href="'mailto:' + $magpie.contactEmail">{{
 -            $magpie.contactEmail
 -          }}</a
 -          >.
-+          <a :href="'mailto:' + $magpie.contactEmail">
-+            {{ $magpie.contactEmail }}
-+          </a>.
++          Deine Daten konnten leider nicht erfolgreich an den Server
++          übermittelt werden. Bitte schließe diese Seite noch nicht.
          </p>
+-        <p v-text="error" />
 +
-         <p v-text="error" />
++        <p>
++          Wende dich bitte per E-Mail an
++          <a :href="emailLink">
++            {{ researcherEmail }}
++          </a>
++          und beschreibe kurz, was passiert ist.
++        </p>
++
++        <p>
++          Kopiere bitte auch die folgende Fehlermeldung in deine E-Mail:
++        </p>
++
++        <p class="technical-error" v-text="error" />
        </div>
      </Slide>
    </Screen>
@@ -87,7 +112,7 @@ index 23425df..89e8a6c 100644
    <DebugResultsScreen v-else />
  </template>
  
-@@ -35,28 +38,87 @@ import Screen from '../Screen';
+@@ -35,30 +53,137 @@ import Screen from '../Screen';
  import Wait from '../helpers/Wait';
  import DebugResultsScreen from './DebugResultsScreen';
  import Slide from '../Slide';
@@ -106,15 +131,38 @@ index 23425df..89e8a6c 100644
 +
    data() {
      return {
-       error: null
+-      error: null
++      error: null,
++      researcherEmail: 'gemma.seghi@uni-tuebingen.de'
      };
    },
++
++  computed: {
++    emailLink() {
++      const subject = encodeURIComponent(
++        'Technisches Problem bei der Online-Studie'
++      );
++
++      const body = encodeURIComponent(
++        `Hallo,\n\n` +
++          `bei der Übertragung meiner Daten in der Online-Studie ist ein ` +
++          `technisches Problem aufgetreten.\n\n` +
++          `Fehlermeldung:\n${this.error || ''}\n\n` +
++          `Viele Grüße`
++      );
++
++      return (
++        `mailto:${this.researcherEmail}` +
++        `?subject=${subject}` +
++        `&body=${body}`
++      );
++    }
++  },
 +
    methods: {
 -    async submit(cb) {
 +    async submit() {
        try {
-+        // Wait until the data have been successfully submitted.
          await this.$magpie.submit();
 -        cb();
 +
@@ -135,8 +183,8 @@ index 23425df..89e8a6c 100644
 +
 +        // Show the error on the second slide without redirecting.
 +        this.$magpie.nextSlide();
-+      }
-+    },
+       }
+     },
 +
 +    disableUnloadWarning() {
 +      const experiment = this.$magpie.experiment;
@@ -146,8 +194,8 @@ index 23425df..89e8a6c 100644
 +        typeof experiment.disableBeforeUnload === 'function'
 +      ) {
 +        experiment.disableBeforeUnload();
-       }
-     },
++      }
++    },
 +
      redirectToCompletionUrl() {
 -      if (this.$magpie.completionUrl && this.$magpie.mode === 'prolific') {
@@ -183,3 +231,32 @@ index 23425df..89e8a6c 100644
        }
      }
    }
+ };
+ </script>
++
++<style scoped>
++.submission-error {
++  box-sizing: border-box;
++  width: 100%;
++  max-width: 650px;
++  margin: 30px auto;
++  padding: 0 25px;
++  font-size: 18px;
++  line-height: 1.6;
++  text-align: left;
++}
++
++.submission-error h2 {
++  text-align: center;
++}
++
++.technical-error {
++  padding: 12px;
++  border: 1px solid #cccccc;
++  border-radius: 4px;
++  background: #f5f5f5;
++  font-family: monospace;
++  overflow-wrap: anywhere;
++}
++</style>
+\ No newline at end of file
